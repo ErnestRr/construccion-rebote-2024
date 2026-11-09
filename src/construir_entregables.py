@@ -21,6 +21,12 @@ M = pd.read_csv(SAL / "resultados.csv", dtype={"codigo_entidad": str})
 D = pd.read_csv(SAL / "descomposicion.csv")
 SS = pd.read_csv(SAL / "series_segmentos.csv", dtype={"codigo_entidad": str})
 SENS = pd.read_csv(SAL / "sensibilidad.csv")
+EDOMEX = "Estado de México (Edomex)"
+M["entidad"] = M.entidad.replace({"México": EDOMEX})
+SS["entidad"] = SS.entidad.replace({"México": EDOMEX})
+tot_est = M[M.segmento == "Total del estado"].set_index("entidad")
+priv = M[(M.segmento == "Sector privado") & M.relevante]
+priv_cae = priv[priv.dpct < 0]
 
 
 def pc(v, d=1):
@@ -39,7 +45,9 @@ nac_tot = D.acum12_prev_real_mmdp_2018.sum()
 d = D.set_index("segmento")
 sens = lambda esc, i: SENS[(SENS.escenario == esc)].iloc[i]
 tok = {
-    "HDR_NUM": pc(tit[n_ytd]["delta_pct"]), "HDR_TXT": f'{tit[n_ytd]["estados_que_caen"]} de 32 estados ({tit[n_ytd]["valor_prev_en_caida_pct"]:.1f}% del valor) caen',
+    "HDR_NUM": pc(tit[n_12]["delta_pct"]), "HDR_TXT": f'{tit[n_ytd]["estados_que_caen"]} de 32 estados ({tit[n_ytd]["valor_prev_en_caida_pct"]:.1f}% del valor) caen',
+    "EDOMEX_PTS": f'+{tot_est.loc[EDOMEX, "contrib_pp"]:.2f}', "HGO_PTS": f'+{tot_est.loc["Hidalgo", "contrib_pp"]:.2f}',
+    "PRIV_N": str(len(priv_cae)), "PRIV_V": f'{priv_cae.acum12_prev_real_mmdp_2018.sum() / priv.acum12_prev_real_mmdp_2018.sum() * 100:.0f}',
     "T_MES": pc(tit[n_mes]["delta_pct"]), "T_YTD": pc(tit[n_ytd]["delta_pct"]), "T_12M": pc(tit[n_12]["delta_pct"]),
     "N_MES": f'{tit[n_mes]["estados_que_caen"]} de 32', "N_YTD": f'{tit[n_ytd]["estados_que_caen"]} de 32', "N_12M": f'{tit[n_12]["estados_que_caen"]} de 32',
     "V_MES": f'{tit[n_mes]["valor_prev_en_caida_pct"]:.1f}', "V_YTD": f'{tit[n_ytd]["valor_prev_en_caida_pct"]:.1f}', "V_12M": f'{tit[n_12]["valor_prev_en_caida_pct"]:.1f}',
@@ -77,7 +85,7 @@ mr = mt[mt.relevante].sort_values("contrib_pp", ascending=False)
 sel_top = pd.concat([mr.head(8), mr.tail(8)]).sort_values("contrib_pp", ascending=False)
 top_mercados = [{"nombre": f"{r.entidad} · {cortos[r.segmento]}", "aporte": round(float(r.contrib_pp), 3), "dpct": round(float(r.dpct), 1)} for r in sel_top.itertuples()]
 DATA = {
-    "foco": ["Nuevo León", "Edificación"], "top_mercados": top_mercados, "segmentos": [v[0] for v in calcular.SEGMENTOS.values()],
+    "foco": ["Total nacional (32 estados)", "Total del estado"], "top_mercados": top_mercados, "segmentos": [v[0] for v in calcular.SEGMENTOS.values()],
     "titulares": TIT, "nacional": nac_series, "series": series,
     "desc": [{"segmento": r.segmento, "grupo": r.tipo_segmento, "prev": round(r.acum12_prev_real_mmdp_2018, 3), "act": round(r.acum12_real_mmdp_2018, 3), "dpct": round(r.dpct, 3), "aporte": round(r.contrib_pp, 3)} for r in D.itertuples()],
     "nac_mercado": {**{r.segmento: {"part": round(r.acum12_prev_real_mmdp_2018 / nac_total_prev * 100, 3), "act": round(r.acum12_real_mmdp_2018, 4), "prev": round(r.acum12_prev_real_mmdp_2018, 4), "dpct": round(r.dpct, 3), "aporte": round(r.contrib_pp, 4), "relevante": True} for r in D.itertuples()},

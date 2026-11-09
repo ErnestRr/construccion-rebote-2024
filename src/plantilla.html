@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El titular nacional no es tu mercado</title>
+<title>La cifra nacional no es la de tu mercado</title>
 <style>[[FONTS]]
 :root{--marino:#12213A;--acero:#4A6785;--terra:#C4533A;--marfil:#F6F1E7;--claro:#FBF8F1;--borde:#E3DBC9;--track:#ECE5D6;--linea:#D9D2C2;--ink:#1B1F27;--ink2:#5B6573;--suave:#A9B7C9;--verde:#2B6A52;--vino:#8F2B3E}
 *{box-sizing:border-box}
@@ -10,7 +10,8 @@ body{margin:0;background:var(--marfil);color:var(--ink);font:14px/1.45 Inter,Ari
 header{background:var(--marino);color:var(--marfil);padding:22px 32px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
 header h1{margin:0;font:400 44px/1.05 "Instrument Serif",Georgia,serif}header .sub{color:var(--suave);margin-top:6px;font-size:15px}
 .gran{background:var(--claro);border:1px solid var(--borde);border-radius:4px;padding:14px 26px;color:var(--ink);display:flex;align-items:center;gap:26px;max-width:720px;text-align:left}.gran .gt{flex:1;min-width:0}.gran em{display:block;font-style:normal;font-weight:500;font-size:16px;color:var(--ink);line-height:1.25}.gran .gt span{display:block;font-size:14px;color:var(--ink2);margin-top:4px;line-height:1.3}.gran .gnum{text-align:right}.gran .gnum>b{font:400 64px/1 "Instrument Serif",Georgia,serif;white-space:nowrap;display:block}.gran .gs{display:block;margin-top:8px;font-size:13px;line-height:1.35;color:var(--ink2);border-top:1px solid var(--linea);padding-top:6px;min-width:300px}.gran .gs .r{display:flex;justify-content:space-between;gap:16px;text-align:left}.gran .gs .r b{font-size:13px;display:inline;white-space:nowrap;font-weight:500}.fil-in{display:flex;align-items:center;gap:10px;margin:0 0 8px;flex-wrap:wrap}.fil-in label{white-space:nowrap;font-size:13px}.fil-in select{width:auto;min-width:240px}@media(max-width:700px){.gran{flex-direction:column;align-items:flex-start;gap:6px}.gran .gnum{text-align:left}header h1{font-size:32px}}
-main{padding:20px 20px 8px;max-width:1440px;margin:0 auto}
+.aviso{max-width:1440px;margin:16px auto 0;padding:0 20px}.aviso p{margin:0;background:var(--track);border:1px solid var(--borde);border-radius:4px;padding:12px 16px;font-size:16px;line-height:1.4;color:var(--ink)}
+main{padding:16px 20px 8px;max-width:1440px;margin:0 auto}
 .fila{display:grid;gap:16px;margin-bottom:16px}
 .f4{grid-template-columns:1fr 1fr 1fr 1fr}.f2f{grid-template-columns:1fr 1fr}.f2b{grid-template-columns:1.4fr 1fr}.f4c{grid-template-columns:repeat(4,1fr)}
 .panel{background:var(--claro);border:1px solid var(--borde);border-radius:4px;min-width:0}
@@ -39,53 +40,55 @@ ul.c{margin:0;padding-left:1.1em}ul.c li{margin:4px 0}
 .pie a{color:var(--marfil)}
 .firma{display:flex;align-items:center;gap:14px;font:400 30px/1 "Instrument Serif",Georgia,serif}
 .btn{background:var(--marfil);color:var(--marino)!important;text-decoration:none;font-weight:500;padding:7px 12px;border-radius:2px}
+.nuevo p,.nuevo li,.nuevo .call{font-size:16px}.nuevo .fuente{font-size:13px}.dato{font:400 44px/1.1 'Instrument Serif',Georgia,serif!important;color:var(--marino);margin:0 0 6px!important}
 .legal{max-width:1440px;margin:0 auto;padding:6px 20px 0;font-size:12px;color:var(--ink2);line-height:1.5}.legal b{font-weight:500;color:var(--ink)}
 @media(max-width:1000px){.f2f,.f4,.f2b,.f4c{grid-template-columns:1fr}}
 #tDesc td{padding:9px 6px}</style>
 <script>[[PLOTLY]]</script></head><body>
 <header>
- <div><h1>El titular nacional no es tu mercado</h1><div class="sub">Construcción en México · valor de producción real (pesos de 2018) · corte ago-2026</div></div>
- <div class="gran"><div class="gt"><em id="gem">Titular: año corrido ene–ago 2026</em><span id="gsub">pero [[V_YTD]]% del valor está en estados que caen</span></div><div class="gnum"><b id="gb">[[HDR_NUM]]</b><span class="gs" id="gs"></span></div></div>
+ <div><h1>La cifra nacional no es la de tu mercado</h1><div class="sub">Construcción en México · valor de producción real (pesos de 2018) · corte ago-2026</div></div>
+ <div class="gran"><div class="gt"><em id="gem">Cifra nacional · 12 meses (sep-25 a ago-26)</em><span id="gsub">y [[V_12M]]% del valor está en estados que caen</span></div><div class="gnum"><b id="gb">[[HDR_NUM]]</b><span class="gs" id="gs"></span></div></div>
 </header>
+<div class="aviso"><p>¿Vienes de LinkedIn? El carrusel usa el corte de 12 meses (sep-25 a ago-26 vs. 12 meses previos). Aquí puedes ver los tres cortes.</p></div>
 <main>
 <div class="panel" style="margin-bottom:8px"><h2>1 · El problema</h2>
  <div class="cuerpo"><div class="tres">
-  <div class="mini"><h3>Decisión</h3><p>¿Presupuestar con el titular nacional?</p></div>
+  <div class="mini"><h3>Decisión</h3><p>¿Presupuestar con la cifra nacional?</p></div>
   <div class="mini"><h3>Pregunta</h3><p>¿Refleja <b>tu mercado</b> (estado, obra, cliente)?</p></div>
-  <div class="mini"><h3>Medida</h3><p>% del valor que cae · mediana · aporte (pts)</p></div>
+  <div class="mini"><h3>Medida</h3><p>% del valor que cae · mercado típico · aporte de cada parte (puntos)</p></div>
  </div></div></div>
 
-<div class="panel" style="margin-bottom:8px"><h2>2 · El titular de [[T_YTD]] esconde que [[V_YTD]]% del valor cae</h2>
+<div class="panel" style="margin-bottom:8px"><h2>2 · Tres cortes, tres lecturas: la cifra cambia según el periodo</h2>
  <div class="kpis">
   <div class="kpi"><small>Mes (ago-26 vs. ago-25)</small><b>[[T_MES]]</b><span>[[N_MES]] estados caen · [[V_MES]]% del valor</span></div>
   <div class="kpi"><small>Año corrido (ene–ago)</small><b>[[T_YTD]]</b><span>[[N_YTD]] estados caen · [[V_YTD]]% del valor</span></div>
   <div class="kpi"><small>12 meses (sep-25 a ago-26)</small><b>[[T_12M]]</b><span>[[N_12M]] estados caen · [[V_12M]]% del valor</span></div>
  </div>
  <div class="cuerpo"><div class="leyenda"><span><b style="color:#2B6A52">■</b> Valor en estados que suben</span><span><b style="color:#8F2B3E">■</b> Valor en estados que caen</span><span>Cada anillo: % del valor del periodo previo</span></div><div id="gA" style="height:300px"></div>
- <div class="call"><b>Regla fijada antes de ver los datos:</b> titular positivo y más de 40% del valor en caída. Solo el año corrido la cumple.</div>
+ <div class="call"><b>Caída oculta:</b> la cifra nacional sube, pero más de 40% del valor está en estados que caen. Con el año corrido ([[T_YTD]]) se cumple: [[V_YTD]]% del valor cae. En 12 meses la cifra nacional ya es negativa ([[T_12M]]). Criterio fijado antes de ver los datos.</div>
  <p class="fuente">Fuente: elaboración propia con datos de INEGI (ENEC Serie 2018). Pesos constantes de 2018.</p></div></div>
 
 <div class="fila f2b">
- <div class="panel"><h2>3 · Transporte y electricidad sostienen el total; edificación y cliente privado caen</h2><div class="cuerpo">
+ <div class="panel"><h2>3 · En 12 meses, transporte y electricidad sostienen el total; edificación y cliente privado caen</h2><div class="cuerpo">
   <div id="gB" style="height:400px"></div>
-  <p class="fuente">Δ% real de 12 meses (sep-25 a ago-26 vs. 12 previos); aporte en puntos del total. Fuente: elaboración propia con datos de INEGI (ENEC Serie 2018). Pesos constantes de 2018.</p></div></div>
- <div class="panel"><h2>Qué aporta cada parte al [[T_12M]]</h2><div class="cuerpo">
-  <table id="tDesc"><thead><tr><th class="t">Parte</th><th>Previo (mmdp)</th><th>Actual (mmdp)</th><th>Δ% real</th><th>Aporte (pts)</th></tr></thead><tbody></tbody></table>
-  <p class="fuente">mmdp = miles de millones de pesos de 2018. Fuente: elaboración propia con datos de INEGI (ENEC Serie 2018).</p></div></div>
+  <p class="fuente">Variación real de 12 meses (sep-25 a ago-26 vs. 12 previos); aporte en puntos del total. Fuente: elaboración propia con datos de INEGI (ENEC Serie 2018). Pesos constantes de 2018.</p></div></div>
+ <div class="panel"><h2>Qué aporta cada parte al total de 12 meses ([[T_12M]])</h2><div class="cuerpo">
+  <table id="tDesc"><thead><tr><th class="t">Parte</th><th>12 meses previos (mmdp)</th><th>Últimos 12 meses (mmdp)</th><th>Variación real</th><th>Aporte (puntos)</th></tr></thead><tbody></tbody></table>
+  <p class="fuente">mmdp = miles de millones de pesos de 2018. En obra privada, [[PRIV_N]] estados caen y pesan [[PRIV_V]]% del valor privado. Fuente: elaboración propia con datos de INEGI (ENEC Serie 2018).</p></div></div>
 </div>
 
 <div class="fila f2b">
- <div class="panel"><h2>4 · [[CELDAS_CAEN]] de [[CELDAS_REL]] mercados caen y concentran [[V_CELDAS]]% del valor</h2><div class="cuerpo">
+ <div class="panel"><h2>4 · [[CELDAS_CAEN]] de [[CELDAS_REL]] mercados (estado × tipo de obra) caen y concentran [[V_CELDAS]]% del valor</h2><div class="cuerpo">
   <div id="gC" style="height:800px"></div>
   <p class="fuente">Mercados con al menos 0.1% del total; en blanco = no relevante (no es cero). Escala limitada a ±50%. Fuente: elaboración propia con datos de INEGI (ENEC Serie 2018). Pesos constantes de 2018.</p></div></div>
  <div class="panel"><h2>Los mercados que más suman y más restan</h2><div class="cuerpo">
-  <div class="call"><b>Mediana ponderada de los mercados: [[MED_CELDAS]]</b></div>
-  <ul class="c"><li>Sin México e Hidalgo, el año corrido pasa de [[T_YTD]] a [[SIN_YTD]].</li><li>Sin petróleo, el total de 12 meses pasa de [[T_12M]] a [[SIN_PETR]].</li><li>Con otros umbrales, entre [[U_MIN]]% y [[U_MAX]]% del valor cae.</li></ul>
+  <div class="call"><b>Mercado típico (mediana ponderada por tamaño): [[MED_CELDAS]]</b></div>
+  <ul class="c"><li>En 12 meses, sin Estado de México (Edomex) e Hidalgo, el total pasa de [[T_12M]] a [[SIN_12M]]: aportan [[EDOMEX_PTS]] y [[HGO_PTS]] puntos.</li><li>En año corrido, sin Edomex e Hidalgo, la cifra pasa de [[T_YTD]] a [[SIN_YTD]].</li><li>Sin petróleo, el total de 12 meses pasa de [[T_12M]] a [[SIN_PETR]].</li><li>Aunque cambie el tamaño mínimo de mercado considerado, entre [[U_MIN]]% y [[U_MAX]]% del valor cae.</li></ul>
   <div id="gE" style="height:560px"></div>
   <p class="fuente">Fuente: elaboración propia con datos de INEGI (ENEC Serie 2018). Pesos constantes de 2018.</p></div></div>
 </div>
 
-<div class="panel" style="margin-bottom:8px"><h2 id="tituloM">5 · Tu mercado frente al titular</h2><div class="cuerpo">
+<div class="panel" style="margin-bottom:8px"><h2 id="tituloM">5 · Tu mercado frente a la cifra nacional</h2><div class="cuerpo">
  <div class="fila f2f" style="margin-bottom:6px">
   <div class="panel filtro"><label><b>Entidad federativa</b></label><select id="selEstado"></select></div>
   <div class="panel filtro"><label><b>Segmento de mercado (tipo de obra o cliente)</b></label><select id="selSeg"></select></div>
@@ -98,22 +101,35 @@ ul.c{margin:0;padding-left:1.1em}ul.c li{margin:4px 0}
 <div class="panel" style="margin-bottom:8px"><h2>6 · Mercados relevantes por estado <span id="cuenta" style="font-weight:400"></span></h2><div class="cuerpo">
  <div class="fil-in"><label><b>Segmento de mercado</b></label><select id="selSeg2"></select></div>
  <div class="scroll"><table id="t"><thead></thead><tbody></tbody></table></div>
- <p class="fuente">Sigue el selector de tipo de obra o cliente. Aporte = Δ del monto real de la parte ÷ acumulado previo nacional. Fuente: elaboración propia con datos de INEGI (ENEC Serie 2018).</p></div></div>
+ <p class="fuente">Sigue el selector de tipo de obra o cliente. Aporte = cambio del monto real de la parte ÷ acumulado previo nacional. Fuente: elaboración propia con datos de INEGI (ENEC Serie 2018).</p></div></div>
 
-<div class="panel" style="margin-bottom:8px"><h2>7 · Conclusiones</h2><div class="cuerpo"><div class="fila f4c" style="margin:0">
- <div class="mini"><h3>Hallazgo verificado</h3><ul class="c"><li>Año corrido [[T_YTD]]: [[V_YTD]]% del valor cae</li><li>Mes [[T_MES]]: alza más amplia</li><li>Transporte [[TRANSP_PCT]], electricidad [[ELEC_PCT]]</li><li>Edificación [[EDIF_PCT]], cliente privado [[PRIV_PCT]]</li></ul></div>
- <div class="mini"><h3>Interpretación</h3><ul class="c"><li>El titular refleja obra de transporte en pocos estados</li><li>Edificación y cliente privado viven otro mercado</li></ul></div>
+<div class="panel nuevo" style="margin-bottom:8px"><h2>7 · Costos y 2027</h2><div class="cuerpo">
+ <div class="fila f2b" style="margin-bottom:0">
+  <div><div id="gF" style="height:300px"></div>
+   <p class="fuente">Variación anual de septiembre de 2026. Fuente: elaboración propia con datos de INEGI, Índice Nacional de Precios Productor (INPP), boletín 620/26, cifras preliminares.</p></div>
+  <div class="call" style="align-self:center"><b>Insumos contra precio.</b> Si tu obra lleva mucho acero, tu margen se aprieta: los metales suben más del doble que lo que cobra la construcción. Cemento y concreto suben un poco menos. Revisa tu precio con tu mezcla de insumos, no con el promedio.</div>
+ </div>
+ <div class="fila f2f" style="margin:16px 0 0">
+  <div class="mini"><h3>Inversión pública 2027</h3><p class="dato">$1.03 billones</p><p>Inversión física del Proyecto de Presupuesto de Egresos 2027 (presentado el 8-sep-2026): +3.5% real contra 2026 y 2.6% del PIB. 15% se destina a trenes. Pendiente de aprobación (fecha límite: 15-nov-2026).</p><p class="imp">El crecimiento de la obra pública se concentra en pocos proyectos grandes.</p><p class="fuente">Fuente: IMCO, Paquete Económico 2027.</p></div>
+  <div class="mini"><h3>Costo del dinero</h3><p class="dato">6.25%</p><p>Banxico bajó la tasa objetivo 25 puntos base el 5-nov-2026 y prevé mantenerla por un tiempo prolongado.</p><p class="fuente">Fuente: Banxico, anuncio de política monetaria.</p></div>
+ </div>
+ <div class="call" style="margin-top:16px"><b>3 decisiones para tu presupuesto 2027</b><ol class="c" style="margin:6px 0 0"><li><b>Presupuesta con tu mercado:</b> tu estado, tu tipo de obra y tu cliente, no con el promedio nacional.</li><li><b>Cotiza con tus costos:</b> en contratos largos incluye ajuste por acero y concreto.</li><li><b>Si te vas a obra pública,</b> revisa los plazos de pago antes de entrar.</li></ol></div>
+</div></div>
+
+<div class="panel" style="margin-bottom:8px"><h2>8 · Conclusiones</h2><div class="cuerpo"><div class="fila f4c" style="margin:0">
+ <div class="mini"><h3>Hallazgo verificado</h3><ul class="c"><li>Año corrido [[T_YTD]]: [[V_YTD]]% del valor cae</li><li>Mes [[T_MES]]: alza más amplia</li><li>12 meses [[T_12M]]: [[V_12M]]% del valor cae</li><li>En 12 meses: transporte [[TRANSP_PCT]], electricidad [[ELEC_PCT]], edificación [[EDIF_PCT]], cliente privado [[PRIV_PCT]]</li></ul></div>
+ <div class="mini"><h3>Interpretación</h3><ul class="c"><li>La cifra nacional refleja sobre todo obra de transporte en pocos estados</li><li>Edificación y cliente privado viven otro mercado</li></ul></div>
  <div class="mini"><h3>Contexto</h3><ul class="c"><li>Cifras 2026 revisables (próx.: 24-nov-2026)</li><li>Estado = lugar de la obra</li></ul></div>
  <div class="mini"><h3>Falta saber</h3><ul class="c"><li>Cartera propia</li><li>Márgenes y plazos de cobro</li><li>Competencia local</li></ul></div>
 </div></div></div>
 
-<div class="panel" style="margin-bottom:8px"><h2>8 · Efecto en la empresa · metas e inversión según tu mercado, no el titular</h2><div class="cuerpo"><div class="fila f4c" style="margin:0">
- <div class="mini efecto"><h3>Presupuesto</h3><p>Con el titular [[T_YTD]] se sobreestima si vendes edificación ([[EDIF_PCT]]) o a clientes privados ([[PRIV_PCT]]).</p><p class="imp">→ Meta de ventas desde el Δ real de tu mercado.</p></div>
- <div class="mini efecto"><h3>Capital</h3><p>[[V_YTD]]% del valor está en estados que caen aunque el total suba.</p><p class="imp">→ Evitar invertir con el titular.</p></div>
+<div class="panel" style="margin-bottom:8px"><h2>9 · Efecto en tu empresa · metas e inversión según tu mercado, no la cifra nacional</h2><div class="cuerpo"><div class="fila f4c" style="margin:0">
+ <div class="mini efecto"><h3>Presupuesto</h3><p>Presupuestar con la cifra nacional de año corrido ([[T_YTD]]) sobreestima si vendes edificación ([[EDIF_PCT]] en 12 meses) o a clientes privados ([[PRIV_PCT]] en 12 meses).</p><p class="imp">→ Meta de ventas desde la variación real de tu mercado.</p></div>
+ <div class="mini efecto"><h3>Capital</h3><p>En año corrido, [[V_YTD]]% del valor está en estados que caen aunque el total suba.</p><p class="imp">→ Evitar invertir con la cifra nacional.</p></div>
  <div class="mini efecto"><h3>Precios y margen</h3><p>En mercados que caen hay menos volumen por repartir.</p><p class="imp">→ Hipótesis: más presión de precios; validar con costos propios.</p></div>
- <div class="mini efecto"><h3>Regla propuesta</h3><p>Seguir cada mes el Δ real de tu mercado contra el titular.</p><p class="imp">→ Brecha menor a −5 pts en 3 cortes: revisar el plan comercial.</p></div>
+ <div class="mini efecto"><h3>Regla propuesta</h3><p>Seguir cada mes la variación real de tu mercado contra la cifra nacional.</p><p class="imp">→ Diferencia menor a −5 puntos en 3 cortes: revisar el plan comercial.</p></div>
 </div>
-<div class="call" style="margin-top:10px"><b>Qué significa para la empresa:</b> el titular nacional no sirve para fijar metas ni inversión de un mercado específico. <b>La dirección debe responder:</b> ¿qué parte de la cartera está en mercados que caen aunque el titular suba?</div></div></div>
+<div class="call" style="margin-top:10px"><b>Qué significa para la empresa:</b> la cifra nacional no sirve para fijar metas ni inversión de un mercado específico. <b>La dirección debe responder:</b> ¿qué parte de la cartera está en mercados que caen aunque la cifra nacional suba?</div></div></div>
 </main>
 <div class="legal"><b>Elaboración propia con datos de INEGI, Encuesta Nacional de Empresas Constructoras (ENEC), Serie 2018, corte agosto 2026.</b> Valor de producción real en pesos constantes de 2018. No mide márgenes, plazos de cobro ni demanda capturable. ▲ sube, ▼ baja.<br><i>Contenido informativo; no constituye asesoría legal, financiera ni comercial. Sin aval ni relación con INEGI.</i></div>
 <div class="filete"></div>
@@ -142,36 +158,38 @@ selS.innerHTML=selS2.innerHTML=SEGS.map(n=>'<option'+(n===DATA.foco[1]?' selecte
 const zero={type:'line',xref:'paper',x0:0,x1:1,yref:'y',y0:0,y1:0,line:{color:'#12213A',width:1.5}};
 
 function dibujaA(){
- const t=DATA.titulares,n=t.length,ancho=1/n,tr=[],ann=[];
+ const t=DATA.titulares,n=t.length,tr=[],ann=[];
+ if(NAR)document.getElementById('gA').style.height='900px';
  t.forEach((x,i)=>{
-  const x0=i*ancho+0.02,x1=(i+1)*ancho-0.02,cx=(x0+x1)/2;
-  tr.push({type:'pie',hole:0.74,sort:false,direction:'clockwise',rotation:0,domain:{x:[x0,x1],y:[0,0.86]},labels:['Valor en estados que suben','Valor en estados que caen'],values:[100-x.v,x.v],
+  const ancho=1/n,x0=NAR?0.12:i*ancho+0.02,x1=NAR?0.88:(i+1)*ancho-0.02,cx=(x0+x1)/2;
+  const y0=NAR?1-(i+1)/n+0.02:0,y1=NAR?1-i/n-0.1:0.86,cy=(y0+y1)/2;
+  tr.push({type:'pie',hole:0.74,sort:false,direction:'clockwise',rotation:0,domain:{x:[x0,x1],y:[y0,y1]},labels:['Valor en estados que suben','Valor en estados que caen'],values:[100-x.v,x.v],
    marker:{colors:[AZUL,ROJO],line:{color:'#FBF8F1',width:3}},textinfo:'value',texttemplate:'%{value:.1f}%',textfont:{size:14,color:'#F6F1E7'},hovertemplate:'%{label}: %{value:.1f}% del valor previo<extra></extra>'});
-  ann.push({x:cx,y:0.43,xref:'paper',yref:'paper',showarrow:false,text:'<b>'+fp(x.d)+'</b>',font:{size:22,color:sg(x.d)}});
-  ann.push({x:cx,y:0.31,xref:'paper',yref:'paper',showarrow:false,text:'titular nacional',font:{size:11,color:'#5B6573'}});
-  ann.push({x:cx,y:0.99,xref:'paper',yref:'paper',showarrow:false,text:'<b>'+x.corto+'</b>',font:{size:13,color:'#12213A'}});
+  ann.push({x:cx,y:NAR?cy+0.02:0.43,xref:'paper',yref:'paper',showarrow:false,text:'<b>'+fp(x.d)+'</b>',font:{size:22,color:sg(x.d)}});
+  ann.push({x:cx,y:NAR?cy-0.02:0.31,xref:'paper',yref:'paper',showarrow:false,text:'cifra nacional',font:{size:12,color:'#5B6573'}});
+  ann.push({x:cx,y:NAR?y1+0.03:0.99,xref:'paper',yref:'paper',showarrow:false,text:'<b>'+x.corto+'</b>',font:{size:13,color:'#12213A'}});
  });
  Plotly.newPlot('gA',tr,{...LAY,annotations:ann,margin:{l:10,r:10,t:10,b:10}},CFG);
 }
 function dibujaB(){
  const d=DATA.desc.slice().sort((a,b)=>a.grupo===b.grupo?a.aporte-b.aporte:(a.grupo==='tipo de obra'?-1:1));
  const ys=[],xs=[],tx=[],cs=[];
- d.forEach((r,i)=>{if(i>0&&r.grupo!==d[i-1].grupo){ys.push(' ');xs.push(null);tx.push('');cs.push(AZUL);}ys.push(r.segmento);xs.push(r.dpct);tx.push(NAR?fp(r.dpct):fp(r.dpct)+' · aporta '+fpp(r.aporte)+' pts');cs.push(sg(r.dpct));});
- Plotly.newPlot('gB',[{type:'bar',orientation:'h',y:ys,x:xs,marker:{color:cs},text:tx,textposition:'outside',cliponaxis:false,textfont:{size:11},hovertemplate:'<b>%{y}</b><br>Δ% real 12m: %{x:+.1f}%<extra></extra>'}],
-  {...LAY,title:tit('Δ% real de 12 meses por tipo de obra y cliente'),xaxis:{...AX,title:{text:'Δ % real del acumulado de 12 meses',standoff:8},ticksuffix:'%',range:NAR?[-110,125]:[-88,62]},yaxis:{...AX,gridcolor:'#E3DBC9',automargin:true,autorange:'reversed'},shapes:[{type:'line',yref:'paper',y0:0,y1:1,xref:'x',x0:0,x1:0,line:{color:'#12213A',width:1.5}}],margin:{l:NAR?150:210,r:30,t:50,b:64}},CFG);
+ d.forEach((r,i)=>{if(i>0&&r.grupo!==d[i-1].grupo){ys.push(' ');xs.push(null);tx.push('');cs.push(AZUL);}ys.push(r.segmento);xs.push(r.dpct);tx.push(NAR?fp(r.dpct):fp(r.dpct)+' · aporta '+fpp(r.aporte)+' puntos');cs.push(sg(r.dpct));});
+ Plotly.newPlot('gB',[{type:'bar',orientation:'h',y:ys,x:xs,marker:{color:cs},text:tx,textposition:'outside',cliponaxis:false,textfont:{size:11},hovertemplate:'<b>%{y}</b><br>Variación real 12m: %{x:+.1f}%<extra></extra>'}],
+  {...LAY,title:tit('Variación real de 12 meses por tipo de obra y cliente'),xaxis:{...AX,title:{text:'Variación real del acumulado de 12 meses',standoff:8},ticksuffix:'%',range:NAR?[-110,125]:[-88,62]},yaxis:{...AX,gridcolor:'#E3DBC9',automargin:true,autorange:'reversed'},shapes:[{type:'line',yref:'paper',y0:0,y1:1,xref:'x',x0:0,x1:0,line:{color:'#12213A',width:1.5}}],margin:{l:NAR?150:210,r:30,t:50,b:64}},CFG);
 }
 function dibujaC(){
  const H=DATA.heat;
  Plotly.newPlot('gC',[{type:'heatmap',x:H.tipos,y:H.estados,z:H.z,zmin:-50,zmax:50,zmid:0,colorscale:[[0,ROJO],[0.5,'#F6F1E7'],[1,AZUL]],
   text:H.z.map(r=>r.map(v=>v===null?'':(v>=0?'+':'−')+Math.abs(v).toFixed(0))),texttemplate:'%{text}',textfont:{size:10,color:'#12213A'},xgap:2,ygap:2,
-  customdata:H.base,hovertemplate:'<b>%{y}</b> · %{x}<br>Δ% real 12m: %{z:+.1f}%<br>Acum. previo: %{customdata:.2f} mmdp<extra></extra>',
-  colorbar:{title:{text:'Δ% real 12m',side:'right'},ticksuffix:'%',len:0.5,thickness:12}}],
-  {...LAY,title:tit('Δ% real de 12 meses por estado y tipo de obra'),xaxis:{title:{text:'Tipo de obra',standoff:8},side:'bottom',tickmode:'array',tickvals:H.tipos,ticktext:H.cortos,tickangle:NAR?-40:0,tickfont:{size:11}},yaxis:{autorange:'reversed',automargin:true,tickfont:{size:11}},margin:{l:NAR?120:160,r:24,t:50,b:NAR?150:96}},CFG);
+  customdata:H.base,hovertemplate:'<b>%{y}</b> · %{x}<br>Variación real 12m: %{z:+.1f}%<br>Acum. previo: %{customdata:.2f} mmdp<extra></extra>',
+  colorbar:{title:{text:'Variación real 12m',side:'right'},ticksuffix:'%',len:0.5,thickness:12}}],
+  {...LAY,title:tit('Variación real de 12 meses por estado y tipo de obra'),xaxis:{title:{text:'Tipo de obra',standoff:8},side:'bottom',tickmode:'array',tickvals:H.tipos,ticktext:H.cortos,tickangle:NAR?-40:0,tickfont:{size:11}},yaxis:{autorange:'reversed',automargin:true,tickfont:{size:11}},margin:{l:NAR?150:210,r:24,t:50,b:NAR?150:96}},CFG);
 }
 function dibujaE(){
  const d=DATA.top_mercados;
- Plotly.newPlot('gE',[{type:'bar',orientation:'h',y:d.map(e=>e.nombre),x:d.map(e=>e.aporte),marker:{color:d.map(e=>sg(e.aporte))},text:d.map(e=>fpp(e.aporte,2)+' pts · '+fp(e.dpct,0)),textposition:'outside',cliponaxis:false,textfont:{size:11},hovertemplate:'<b>%{y}</b><br>Aporte al total: %{x:+.2f} pts<extra></extra>'}],
-  {...LAY,title:tit('Aporte al total de 12 meses (puntos porcentuales)'),xaxis:{...AX,title:{text:'Aporte al total nacional (pts)',standoff:8},range:[-3.4,2.8]},yaxis:{...AX,gridcolor:'#E3DBC9',automargin:true,autorange:'reversed',tickfont:{size:11}},shapes:[{type:'line',yref:'paper',y0:0,y1:1,xref:'x',x0:0,x1:0,line:{color:'#12213A',width:1.5}}],margin:{l:NAR?150:230,r:30,t:50,b:64}},CFG);
+ Plotly.newPlot('gE',[{type:'bar',orientation:'h',y:d.map(e=>e.nombre),x:d.map(e=>e.aporte),marker:{color:d.map(e=>sg(e.aporte))},text:d.map(e=>fpp(e.aporte,2)+' puntos · '+fp(e.dpct,0)),textposition:'outside',cliponaxis:false,textfont:{size:11},hovertemplate:'<b>%{y}</b><br>Aporte al total: %{x:+.2f} puntos<extra></extra>'}],
+  {...LAY,title:tit('Aporte al total de 12 meses (puntos porcentuales)'),xaxis:{...AX,title:{text:'Aporte al total nacional (puntos)',standoff:8},range:[-3.4,2.8]},yaxis:{...AX,gridcolor:'#E3DBC9',automargin:true,autorange:'reversed',tickfont:{size:11}},shapes:[{type:'line',yref:'paper',y0:0,y1:1,xref:'x',x0:0,x1:0,line:{color:'#12213A',width:1.5}}],margin:{l:NAR?150:230,r:30,t:50,b:64}},CFG);
 }
 function segFila(e,s){return e===TOTAL?DATA.nac_mercado[s]:M.find(m=>m.entidad===e&&m.segmento===s);}
 function dibujaD(){
@@ -181,21 +199,27 @@ function dibujaD(){
  const k=(a,b,c)=>'<div class="kpi"><small>'+a+'</small><b>'+b+'</b><span>'+c+'</span></div>';
  if(m && m.relevante){
   const g12=m.dpct-T[2].d;
-  document.getElementById('kpisM').innerHTML=k('Δ% real 12m de tu mercado',pc(m.dpct),nf(m.act,2)+' mmdp acumulados')+k('Tamaño',nf(m.part,2)+'%','del total nacional')+k('Brecha vs. titular de 12 meses ('+fp(T[2].d)+')',pc(g12).replace('%',' pts'),'tu mercado menos el total')+k('Mismo mercado, nacional',pc(DATA.desc_nac[s]),'suma de los 32 estados');
-  document.getElementById('veredicto').innerHTML=m.dpct<0&&T[1].d>0?'<b>Tu mercado cae '+fp(m.dpct)+' mientras el titular del año corrido sube '+fp(T[1].d)+'.</b>':(m.dpct>=0&&T[2].d<0?'<b>Tu mercado crece '+fp(m.dpct)+' aunque el total de 12 meses cae '+fp(T[2].d)+'.</b>':'<b>Tu mercado ('+fp(m.dpct)+') y el total de 12 meses ('+fp(T[2].d)+') van en la misma dirección.</b>');
+  document.getElementById('kpisM').innerHTML=k('Variación real 12m de tu mercado',pc(m.dpct),nf(m.act,2)+' mmdp acumulados')+k('Tamaño',nf(m.part,2)+'%','del total nacional')+k('Diferencia contra la cifra nacional de 12 meses ('+fp(T[2].d)+')',pc(g12).replace('%',' puntos'),'tu mercado menos el total nacional')+k('Mismo mercado, nacional',pc(DATA.desc_nac[s]),'suma de los 32 estados');
+  document.getElementById('veredicto').innerHTML=m.dpct<0&&T[1].d>0?'<b>Tu mercado cae '+fp(m.dpct)+' mientras la cifra nacional del año corrido sube '+fp(T[1].d)+'.</b>':(m.dpct>=0&&T[2].d<0?'<b>Tu mercado crece '+fp(m.dpct)+' aunque el total de 12 meses cae '+fp(T[2].d)+'.</b>':'<b>Tu mercado ('+fp(m.dpct)+') y el total de 12 meses ('+fp(T[2].d)+') van en la misma dirección.</b>');
  }else{
   document.getElementById('kpisM').innerHTML=k('Tu mercado','Sin dato','menos de 0.1% del total nacional');
   document.getElementById('veredicto').innerHTML='<b>Mercado demasiado pequeño en estos datos:</b> no se calcula Δ%.';
  }
- const tr=[...(esT&&s==='Total del estado'?[]:[{x:nt.x,y:nt.y,mode:'lines',name:'Total nacional (titular de 12 meses)',line:{color:'#5B6573',width:2,dash:'dash'},hovertemplate:'Total nacional: %{y:+.1f}%<extra></extra>'}])];
+ const tr=[...(esT&&s==='Total del estado'?[]:[{x:nt.x,y:nt.y,mode:'lines',name:'Total nacional (12 meses)',line:{color:'#5B6573',width:2,dash:'dash'},hovertemplate:'Total nacional: %{y:+.1f}%<extra></extra>'}])];
  if(s!=='Total del estado'&&!esT)tr.push({x:nac.x,y:nac.y,mode:'lines',name:s+' (nacional)',line:{color:'#C4533A',width:2,dash:'dot'},hovertemplate:s+' nacional: %{y:+.1f}%<extra></extra>'});
  if(ser)tr.push({x:ser.x,y:ser.y,mode:'lines+markers',name:esT?'Total nacional · '+s:e+' · '+s,line:{color:GRIS,width:1.6},marker:{size:ser.y.map((_,i)=>i===ser.y.length-1?12:6),color:ser.y.map(sg),line:{color:'#FBF8F1',width:1}},hovertemplate:e+': %{y:+.1f}%<extra></extra>'});
- Plotly.react('gD',tr,{...LAY,showlegend:true,legend:{orientation:'h',y:NAR?-0.6:-0.28},hovermode:'x unified',title:tit(e+' · '+s+': Δ% real 12m vs. total nacional'),xaxis:{...AX,title:{text:'Mes de corte del acumulado de 12 meses',standoff:8},tickformat:'%b %Y',dtick:'M6'},yaxis:{...AX,title:{text:'Δ % real vs. 12 meses previos',standoff:8},ticksuffix:'%'},shapes:[zero],margin:{l:84,r:24,t:50,b:NAR?170:96}},CFG);
+ Plotly.react('gD',tr,{...LAY,showlegend:true,legend:{orientation:'h',y:NAR?-0.6:-0.28},hovermode:'x unified',title:tit(e+' · '+s+': variación real 12m vs. total nacional'),xaxis:{...AX,title:{text:'Mes de corte del acumulado de 12 meses',standoff:8},tickformat:'%b %Y',dtick:'M6'},yaxis:{...AX,title:{text:'Variación real vs. 12 meses previos',standoff:8},ticksuffix:'%'},shapes:[zero],margin:{l:84,r:24,t:50,b:NAR?170:96}},CFG);
+}
+function dibujaF(){
+ const n=['Industrias metálicas básicas<br>(incluye acero y otros metales)','Productos de minerales no metálicos<br>(incluye cemento y concreto)','Construcción<br>(lo que cobra la construcción)'],v=[13.72,5.06,5.71];
+ const o=[0,2,1],cols=['#C4533A','#9DB0C6','#12213A'];
+ Plotly.newPlot('gF',[{type:'bar',orientation:'h',y:[n[0],n[1],n[2]],x:[v[0],v[1],v[2]],marker:{color:cols},text:v.map(x=>'+'+x.toFixed(2)+'%'),textposition:'outside',cliponaxis:false,textfont:{size:14},hovertemplate:'<b>%{y}</b><br>Variación anual sep-2026: %{x:+.2f}%<extra></extra>'}],
+  {...LAY,title:tit('Insumos contra precio: variación anual, septiembre 2026'),xaxis:{...AX,ticksuffix:'%',range:[0,17],title:{text:'Variación anual (%)',standoff:8}},yaxis:{...AX,automargin:true,autorange:'reversed',tickfont:{size:NAR?12:13}},margin:{l:NAR?190:260,r:40,t:50,b:60}},CFG);
 }
 function tablaDesc(){
  document.querySelector('#tDesc tbody').innerHTML=DATA.desc.slice().sort((a,b)=>a.grupo===b.grupo?a.aporte-b.aporte:(a.grupo==='tipo de obra'?-1:1)).map(r=>'<tr><td class="t">'+r.segmento+'</td><td>'+nf(r.prev)+'</td><td>'+nf(r.act)+'</td><td>'+pc(r.dpct)+'</td><td class="'+cls(r.aporte)+'">'+fpp(r.aporte)+'</td></tr>').join('');
 }
-const COLS=[['entidad','Estado',m=>m.entidad,'t'],['part','Part. (% del total)',m=>nf(m.part,2),''],['act','Acum. 12m real (mmdp 2018)',m=>nf(m.act,2),''],['dm','Δ monto real (mmdp)',m=>'<span class="'+cls(m.dm)+'">'+fpp(m.dm,2)+'</span>',''],['dpct','Δ% real 12m',m=>m.dpct==null?'—':pc(m.dpct),''],['aporte','Aporte al total (pts)',m=>'<span class="'+cls(m.aporte)+'">'+fpp(m.aporte,2)+'</span>','']];
+const COLS=[['entidad','Estado',m=>m.entidad,'t'],['part','Part. (% del total)',m=>nf(m.part,2),''],['act','Acum. 12m real (mmdp 2018)',m=>nf(m.act,2),''],['dm','Cambio del monto real (mmdp)',m=>'<span class="'+cls(m.dm)+'">'+fpp(m.dm,2)+'</span>',''],['dpct','Variación real 12m',m=>m.dpct==null?'—':pc(m.dpct),''],['aporte','Aporte al total (puntos)',m=>'<span class="'+cls(m.aporte)+'">'+fpp(m.aporte,2)+'</span>','']];
 let orden={k:'dm',asc:true};
 function tabla(){
  const s=selS.value,e0=selE.value;
@@ -221,5 +245,5 @@ function actGran(){
 }
 function todo(){actGran();dibujaD();tabla();}
 selE.onchange=todo;selS.onchange=()=>{selS2.value=selS.value;todo();};selS2.onchange=()=>{selS.value=selS2.value;todo();};
-dibujaA();dibujaB();dibujaC();dibujaE();tablaDesc();todo();
+dibujaA();dibujaB();dibujaC();dibujaE();dibujaF();tablaDesc();todo();
 </script></body></html>
