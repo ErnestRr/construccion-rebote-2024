@@ -49,7 +49,7 @@ ul.c{margin:0;padding-left:1.1em}ul.c li{margin:4px 0}
  <div><h1>La cifra nacional no es la de tu mercado</h1><div class="sub">Construcción en México · valor de producción real (pesos de 2018) · corte ago-2026</div></div>
  <div class="gran"><div class="gt"><em id="gem">Cifra nacional · 12 meses (sep-25 a ago-26)</em><span id="gsub">y [[V_12M]]% del valor está en estados que caen</span></div><div class="gnum"><b id="gb">[[HDR_NUM]]</b><span class="gs" id="gs"></span></div></div>
 </header>
-<div class="aviso"><p>¿Vienes de LinkedIn? El carrusel usa el corte de 12 meses (sep-25 a ago-26 vs. 12 meses previos). Aquí puedes ver los tres cortes.</p></div>
+<div class="aviso"><p>Esta página abre con el corte de 12 meses (sep-25 a ago-26 vs. 12 meses previos). Aquí puedes ver los tres cortes: mes, año corrido y 12 meses.</p></div>
 <main>
 <div class="panel" style="margin-bottom:8px"><h2>1 · El problema</h2>
  <div class="cuerpo"><div class="tres">
@@ -110,8 +110,8 @@ ul.c{margin:0;padding-left:1.1em}ul.c li{margin:4px 0}
   <div class="call" style="align-self:center"><b>Insumos contra precio.</b> Si tu obra lleva mucho acero, tu margen se aprieta: los metales suben más del doble que lo que cobra la construcción. Cemento y concreto suben un poco menos. Revisa tu precio con tu mezcla de insumos, no con el promedio.</div>
  </div>
  <div class="fila f2f" style="margin:16px 0 0">
-  <div class="mini"><h3>Inversión pública 2027</h3><p class="dato">$1.03 billones</p><p>Inversión física del Proyecto de Presupuesto de Egresos 2027 (presentado el 8-sep-2026): +3.5% real contra 2026 y 2.6% del PIB. 15% se destina a trenes. Pendiente de aprobación (fecha límite: 15-nov-2026).</p><p class="imp">El crecimiento de la obra pública se concentra en pocos proyectos grandes.</p><p class="fuente">Fuente: IMCO, Paquete Económico 2027.</p></div>
-  <div class="mini"><h3>Costo del dinero</h3><p class="dato">6.25%</p><p>Banxico bajó la tasa objetivo 25 puntos base el 5-nov-2026 y prevé mantenerla por un tiempo prolongado.</p><p class="fuente">Fuente: Banxico, anuncio de política monetaria.</p></div>
+  <div class="mini"><h3>Inversión pública 2027</h3><p class="dato">$1.03 billones</p><p>Inversión física del Proyecto de Presupuesto de Egresos de la Federación 2027 (presentado el 8-sep-2026): +3.5% real contra 2026 y 2.6% del PIB. Nuevos trenes: $150.9 mil millones, cerca de 15% de la inversión física. Pendiente de aprobación (fecha límite: 15-nov-2026).</p><p class="imp">El crecimiento de la obra pública se concentra en pocos proyectos grandes.</p><p class="fuente">Fuente: SHCP, Proyecto de Presupuesto de Egresos de la Federación 2027 y Criterios Generales de Política Económica 2027 (monto: $1,026.5 mil millones). El porcentaje de trenes es cálculo propio con la tabla de prioridades de inversión.</p></div>
+  <div class="mini"><h3>Costo del dinero</h3><p class="dato">6.25%</p><p>Banxico bajó la tasa objetivo 25 puntos base el 5-nov-2026 y prevé mantenerla por un tiempo prolongado.</p><p class="fuente">Fuente: Banxico, anuncio de política monetaria del 5-nov-2026.</p></div>
  </div>
  <div class="call" style="margin-top:16px"><b>3 decisiones para tu presupuesto 2027</b><ol class="c" style="margin:6px 0 0"><li><b>Presupuesta con tu mercado:</b> tu estado, tu tipo de obra y tu cliente, no con el promedio nacional.</li><li><b>Cotiza con tus costos:</b> en contratos largos incluye ajuste por acero y concreto.</li><li><b>Si te vas a obra pública,</b> revisa los plazos de pago antes de entrar.</li></ol></div>
 </div></div>
@@ -172,11 +172,13 @@ function dibujaA(){
  Plotly.newPlot('gA',tr,{...LAY,annotations:ann,margin:{l:10,r:10,t:10,b:10}},CFG);
 }
 function dibujaB(){
+ const CORTO={'Electricidad y telecomunicaciones':'Electricidad y telecom.','Transporte y urbanización':'Transporte y urbaniz.','Petróleo y petroquímica':'Petróleo y petroquím.','Agua, riego y saneamiento':'Agua y saneamiento','Otras construcciones':'Otras constr.'};
  const d=DATA.desc.slice().sort((a,b)=>a.grupo===b.grupo?a.aporte-b.aporte:(a.grupo==='tipo de obra'?-1:1));
  const ys=[],xs=[],tx=[],cs=[];
- d.forEach((r,i)=>{if(i>0&&r.grupo!==d[i-1].grupo){ys.push(' ');xs.push(null);tx.push('');cs.push(AZUL);}ys.push(r.segmento);xs.push(r.dpct);tx.push(NAR?fp(r.dpct):fp(r.dpct)+' · aporta '+fpp(r.aporte)+' puntos');cs.push(sg(r.dpct));});
- Plotly.newPlot('gB',[{type:'bar',orientation:'h',y:ys,x:xs,marker:{color:cs},text:tx,textposition:'outside',cliponaxis:false,textfont:{size:11},hovertemplate:'<b>%{y}</b><br>Variación real 12m: %{x:+.1f}%<extra></extra>'}],
-  {...LAY,title:tit('Variación real de 12 meses por tipo de obra y cliente'),xaxis:{...AX,title:{text:'Variación real del acumulado de 12 meses',standoff:8},ticksuffix:'%',range:NAR?[-110,125]:[-88,62]},yaxis:{...AX,gridcolor:'#E3DBC9',automargin:true,autorange:'reversed'},shapes:[{type:'line',yref:'paper',y0:0,y1:1,xref:'x',x0:0,x1:0,line:{color:'#12213A',width:1.5}}],margin:{l:NAR?150:210,r:30,t:50,b:64}},CFG);
+ d.forEach((r,i)=>{if(i>0&&r.grupo!==d[i-1].grupo){ys.push(' ');xs.push(null);tx.push('');cs.push(AZUL);}ys.push(NAR?(CORTO[r.segmento]||r.segmento):r.segmento);xs.push(r.dpct);tx.push(NAR?fp(r.dpct):fp(r.dpct)+' · aporta '+fpp(r.aporte)+' puntos');cs.push(sg(r.dpct));});
+ if(NAR)document.getElementById('gB').style.height='500px';
+ Plotly.newPlot('gB',[{type:'bar',orientation:'h',y:ys,x:xs,marker:{color:cs},text:tx,textposition:'outside',cliponaxis:false,textfont:{size:NAR?13:11},hovertemplate:'<b>%{y}</b><br>Variación real 12m: %{x:+.1f}%<extra></extra>'}],
+  {...LAY,title:tit(NAR?'Variación real de 12 meses':'Variación real de 12 meses por tipo de obra y cliente'),xaxis:{...AX,title:{text:NAR?'Variación real (%)':'Variación real del acumulado de 12 meses',standoff:8},ticksuffix:'%',range:NAR?[-80,48]:[-88,62],tickangle:0,nticks:NAR?5:8},yaxis:{...AX,gridcolor:'#E3DBC9',automargin:true,autorange:'reversed',tickfont:{size:NAR?12:12}},shapes:[{type:'line',yref:'paper',y0:0,y1:1,xref:'x',x0:0,x1:0,line:{color:'#12213A',width:1.5}}],margin:{l:NAR?132:210,r:20,t:50,b:70}},CFG);
 }
 function dibujaC(){
  const H=DATA.heat;
