@@ -1,0 +1,289 @@
+codigo_entidad,entidad,segmento,tipo_segmento,acum12_real_mmdp_2018,acum12_prev_real_mmdp_2018,delta_mmdp_2018,dpct,contrib_pp,part_prev_pct,relevante,cae
+01,Aguascalientes,Total del estado,total,5.590567,5.37451,0.216057,4.020034,0.051893,1.290871,True,False
+02,Baja California,Total del estado,total,17.773761,18.547651,-0.77389,-4.172443,-0.185876,4.454849,True,True
+03,Baja California Sur,Total del estado,total,7.174567,7.836239,-0.661672,-8.44374,-0.158923,1.882139,True,True
+04,Campeche,Total del estado,total,9.236508,14.602012,-5.365504,-36.744962,-1.288708,3.507169,True,True
+05,Coahuila de Zaragoza,Total del estado,total,15.147488,18.095201,-2.947713,-16.290027,-0.707993,4.346178,True,True
+06,Colima,Total del estado,total,3.410175,2.696373,0.713802,26.472677,0.171444,0.647626,True,False
+07,Chiapas,Total del estado,total,5.067682,6.276753,-1.20907,-19.262673,-0.290399,1.507575,True,True
+08,Chihuahua,Total del estado,total,13.948183,18.083604,-4.135422,-22.868349,-0.993262,4.343392,True,True
+09,Ciudad de México,Total del estado,total,26.061277,25.172785,0.888492,3.529574,0.213402,6.0461,True,False
+10,Durango,Total del estado,total,2.421786,4.20885,-1.787064,-42.459674,-0.429224,1.010898,True,True
+11,Guanajuato,Total del estado,total,19.381548,18.612792,0.768757,4.130259,0.184643,4.470495,True,False
+12,Guerrero,Total del estado,total,3.651136,3.619712,0.031424,0.868141,0.007548,0.869397,True,False
+13,Hidalgo,Total del estado,total,24.267854,14.043767,10.224088,72.801606,2.455662,3.373088,True,False
+14,Jalisco,Total del estado,total,29.69366,30.111667,-0.418007,-1.38819,-0.100399,7.23234,True,True
+15,México,Total del estado,total,37.2617,25.486899,11.774801,46.199428,2.828119,6.121545,True,False
+16,Michoacán de Ocampo,Total del estado,total,3.968837,3.791849,0.176987,4.667576,0.04251,0.910741,True,False
+17,Morelos,Total del estado,total,1.814178,1.814925,-0.000747,-0.041158,-0.000179,0.435916,True,True
+18,Nayarit,Total del estado,total,4.29839,5.492554,-1.194164,-21.741507,-0.286819,1.319224,True,True
+19,Nuevo León,Total del estado,total,52.175998,50.658437,1.517561,2.995674,0.364494,12.167345,True,False
+20,Oaxaca,Total del estado,total,5.475914,10.244046,-4.768132,-46.545397,-1.145229,2.460456,True,True
+21,Puebla,Total del estado,total,6.374237,8.299348,-1.925111,-23.19593,-0.462381,1.993371,True,True
+22,Querétaro,Total del estado,total,20.763884,16.499094,4.26479,25.848629,1.024334,3.962818,True,False
+23,Quintana Roo,Total del estado,total,12.566214,20.89279,-8.326576,-39.853826,-1.99991,5.018114,True,True
+24,San Luis Potosí,Total del estado,total,9.297923,9.346374,-0.048451,-0.518392,-0.011637,2.244849,True,True
+25,Sinaloa,Total del estado,total,8.177061,8.708141,-0.531079,-6.098651,-0.127557,2.091556,True,True
+26,Sonora,Total del estado,total,19.573383,21.852574,-2.279191,-10.429853,-0.547425,5.248638,True,True
+27,Tabasco,Total del estado,total,8.23541,8.51654,-0.28113,-3.300993,-0.067523,2.045537,True,True
+28,Tamaulipas,Total del estado,total,12.136999,10.692977,1.444023,13.504404,0.346831,2.568282,True,False
+29,Tlaxcala,Total del estado,total,0.740369,0.450783,0.289586,64.240583,0.069554,0.108271,True,False
+30,Veracruz de Ignacio de la Llave,Total del estado,total,13.918391,12.405034,1.513357,12.199544,0.363484,2.97949,True,False
+31,Yucatán,Total del estado,total,9.83527,11.538936,-1.703666,-14.764498,-0.409193,2.771468,True,True
+32,Zacatecas,Total del estado,total,2.566657,2.374272,0.192385,8.102911,0.046208,0.570262,True,False
+01,Aguascalientes,Edificación,tipo de obra,3.663273,3.381623,0.281651,8.328861,0.067648,0.812212,True,False
+02,Baja California,Edificación,tipo de obra,10.962635,11.227689,-0.265054,-2.360719,-0.063662,2.696711,True,True
+03,Baja California Sur,Edificación,tipo de obra,5.40626,5.59242,-0.18616,-3.328792,-0.044713,1.34321,True,True
+04,Campeche,Edificación,tipo de obra,0.571265,0.672862,-0.101597,-15.099228,-0.024402,0.161611,True,True
+05,Coahuila de Zaragoza,Edificación,tipo de obra,8.876282,10.049464,-1.173182,-11.674074,-0.28178,2.41372,True,True
+06,Colima,Edificación,tipo de obra,1.428673,1.728579,-0.299906,-17.349856,-0.072033,0.415177,True,True
+07,Chiapas,Edificación,tipo de obra,1.621915,1.362563,0.259352,19.034165,0.062292,0.327266,True,False
+08,Chihuahua,Edificación,tipo de obra,9.944763,13.393993,-3.44923,-25.752068,-0.82845,3.217023,True,True
+09,Ciudad de México,Edificación,tipo de obra,11.215559,11.985556,-0.769997,-6.424374,-0.184941,2.878739,True,True
+10,Durango,Edificación,tipo de obra,0.958368,1.336666,-0.378298,-28.301632,-0.090861,0.321046,True,True
+11,Guanajuato,Edificación,tipo de obra,12.637577,10.159803,2.477774,24.388011,0.595122,2.440222,True,False
+12,Guerrero,Edificación,tipo de obra,2.038416,2.114032,-0.075616,-3.576876,-0.018162,0.507757,True,True
+13,Hidalgo,Edificación,tipo de obra,3.077492,2.109424,0.968068,45.892513,0.232514,0.50665,True,False
+14,Jalisco,Edificación,tipo de obra,17.334461,14.957944,2.376517,15.887991,0.570801,3.592659,True,False
+15,México,Edificación,tipo de obra,9.538339,12.665987,-3.127648,-24.693285,-0.751211,3.042167,True,True
+16,Michoacán de Ocampo,Edificación,tipo de obra,2.157424,2.268762,-0.111338,-4.907437,-0.026742,0.54492,True,True
+17,Morelos,Edificación,tipo de obra,1.190922,1.255366,-0.064444,-5.133507,-0.015478,0.301519,True,True
+18,Nayarit,Edificación,tipo de obra,2.588902,3.901783,-1.312881,-33.648239,-0.315333,0.937146,True,True
+19,Nuevo León,Edificación,tipo de obra,29.375042,28.394254,0.980789,3.45418,0.23557,6.819845,True,False
+20,Oaxaca,Edificación,tipo de obra,1.243683,1.837866,-0.594182,-32.330019,-0.142713,0.441426,True,True
+21,Puebla,Edificación,tipo de obra,3.441859,4.499973,-1.058114,-23.513779,-0.254142,1.080821,True,True
+22,Querétaro,Edificación,tipo de obra,10.173284,11.590829,-1.417545,-12.229885,-0.340472,2.783932,True,True
+23,Quintana Roo,Edificación,tipo de obra,5.784217,7.31876,-1.534543,-20.967259,-0.368573,1.757849,True,True
+24,San Luis Potosí,Edificación,tipo de obra,4.453087,5.630571,-1.177484,-20.912337,-0.282813,1.352373,True,True
+25,Sinaloa,Edificación,tipo de obra,3.799763,4.352957,-0.553194,-12.708461,-0.132868,1.045511,True,True
+26,Sonora,Edificación,tipo de obra,9.667903,9.349401,0.318502,3.406658,0.076499,2.245576,True,False
+27,Tabasco,Edificación,tipo de obra,1.045159,1.263954,-0.218795,-17.310369,-0.052551,0.303582,True,True
+28,Tamaulipas,Edificación,tipo de obra,6.958609,6.413481,0.545129,8.499735,0.130931,1.540415,True,False
+29,Tlaxcala,Edificación,tipo de obra,0.429443,0.27471,0.154733,56.326017,0.037164,0.065981,False,False
+30,Veracruz de Ignacio de la Llave,Edificación,tipo de obra,6.332937,4.271793,2.061144,48.250087,0.495054,1.026016,True,False
+31,Yucatán,Edificación,tipo de obra,6.517174,6.442936,0.074239,1.152247,0.017831,1.54749,True,False
+32,Zacatecas,Edificación,tipo de obra,1.165205,1.284542,-0.119337,-9.290218,-0.028663,0.308526,True,True
+01,Aguascalientes,"Agua, riego y saneamiento",tipo de obra,0.223402,0.270808,-0.047406,-17.505397,-0.011386,0.065044,False,False
+02,Baja California,"Agua, riego y saneamiento",tipo de obra,0.55966,0.713258,-0.153598,-21.534754,-0.036892,0.171313,True,True
+03,Baja California Sur,"Agua, riego y saneamiento",tipo de obra,0.065126,0.130937,-0.065811,-50.261298,-0.015807,0.031449,False,False
+04,Campeche,"Agua, riego y saneamiento",tipo de obra,0.090152,0.016858,0.073294,434.767503,0.017604,0.004049,False,False
+05,Coahuila de Zaragoza,"Agua, riego y saneamiento",tipo de obra,0.836099,2.401927,-1.565829,-65.190502,-0.376087,0.576905,True,True
+06,Colima,"Agua, riego y saneamiento",tipo de obra,0.673645,0.01289,0.660755,5126.081737,0.158703,0.003096,False,False
+07,Chiapas,"Agua, riego y saneamiento",tipo de obra,0.053801,0.03652,0.017281,47.319783,0.004151,0.008771,False,False
+08,Chihuahua,"Agua, riego y saneamiento",tipo de obra,0.172663,0.449019,-0.276356,-61.546569,-0.066376,0.107847,True,True
+09,Ciudad de México,"Agua, riego y saneamiento",tipo de obra,1.265988,0.841494,0.424494,50.44527,0.101957,0.202113,True,False
+10,Durango,"Agua, riego y saneamiento",tipo de obra,0.226758,0.88348,-0.656721,-74.333506,-0.157734,0.212198,True,True
+11,Guanajuato,"Agua, riego y saneamiento",tipo de obra,0.983946,0.931178,0.052768,5.666816,0.012674,0.223654,True,False
+12,Guerrero,"Agua, riego y saneamiento",tipo de obra,0.002362,0.071259,-0.068897,-96.685605,-0.016548,0.017115,False,False
+13,Hidalgo,"Agua, riego y saneamiento",tipo de obra,0.402206,0.27116,0.131046,48.327732,0.031475,0.065128,False,False
+14,Jalisco,"Agua, riego y saneamiento",tipo de obra,0.992034,1.593296,-0.601261,-37.736965,-0.144413,0.382684,True,True
+15,México,"Agua, riego y saneamiento",tipo de obra,1.8591,1.358792,0.500308,36.820044,0.120166,0.32636,True,False
+16,Michoacán de Ocampo,"Agua, riego y saneamiento",tipo de obra,0.14943,0.164978,-0.015548,-9.424313,-0.003734,0.039625,False,False
+17,Morelos,"Agua, riego y saneamiento",tipo de obra,0.03432,0.068364,-0.034044,-49.797751,-0.008177,0.01642,False,False
+18,Nayarit,"Agua, riego y saneamiento",tipo de obra,0.130216,0.061805,0.068411,110.688573,0.016431,0.014845,False,False
+19,Nuevo León,"Agua, riego y saneamiento",tipo de obra,0.997707,1.331386,-0.333679,-25.062542,-0.080144,0.319778,True,True
+20,Oaxaca,"Agua, riego y saneamiento",tipo de obra,0.164935,0.477323,-0.312388,-65.445814,-0.075031,0.114645,True,True
+21,Puebla,"Agua, riego y saneamiento",tipo de obra,0.163847,0.268948,-0.105101,-39.078653,-0.025244,0.064597,False,False
+22,Querétaro,"Agua, riego y saneamiento",tipo de obra,0.146098,0.035418,0.11068,312.496429,0.026584,0.008507,False,False
+23,Quintana Roo,"Agua, riego y saneamiento",tipo de obra,0.109716,0.104735,0.00498,4.755224,0.001196,0.025156,False,False
+24,San Luis Potosí,"Agua, riego y saneamiento",tipo de obra,0.523963,0.199588,0.324375,162.522015,0.07791,0.047938,False,False
+25,Sinaloa,"Agua, riego y saneamiento",tipo de obra,0.230669,0.353842,-0.123172,-34.809969,-0.029584,0.084987,False,False
+26,Sonora,"Agua, riego y saneamiento",tipo de obra,1.026597,1.942235,-0.915638,-47.143542,-0.219922,0.466494,True,True
+27,Tabasco,"Agua, riego y saneamiento",tipo de obra,0.212928,0.066485,0.146443,220.263962,0.035173,0.015969,False,False
+28,Tamaulipas,"Agua, riego y saneamiento",tipo de obra,0.464293,0.29041,0.173883,59.875065,0.041764,0.069752,False,False
+29,Tlaxcala,"Agua, riego y saneamiento",tipo de obra,0.117509,0.006507,0.111001,1705.798594,0.026661,0.001563,False,False
+30,Veracruz de Ignacio de la Llave,"Agua, riego y saneamiento",tipo de obra,0.676538,0.634728,0.04181,6.587055,0.010042,0.152452,True,False
+31,Yucatán,"Agua, riego y saneamiento",tipo de obra,0.144485,0.086822,0.057663,66.414869,0.01385,0.020853,False,False
+32,Zacatecas,"Agua, riego y saneamiento",tipo de obra,0.018233,0.026076,-0.007843,-30.078742,-0.001884,0.006263,False,False
+01,Aguascalientes,Electricidad y telecomunicaciones,tipo de obra,0.265608,0.425011,-0.159403,-37.505722,-0.038286,0.102081,True,True
+02,Baja California,Electricidad y telecomunicaciones,tipo de obra,1.459267,1.163411,0.295856,25.430065,0.07106,0.279433,True,False
+03,Baja California Sur,Electricidad y telecomunicaciones,tipo de obra,0.698446,0.960534,-0.262088,-27.285683,-0.062949,0.230705,True,True
+04,Campeche,Electricidad y telecomunicaciones,tipo de obra,0.03219,0.068376,-0.036186,-52.922657,-0.008691,0.016423,False,False
+05,Coahuila de Zaragoza,Electricidad y telecomunicaciones,tipo de obra,0.295624,0.272742,0.022882,8.389666,0.005496,0.065508,False,False
+06,Colima,Electricidad y telecomunicaciones,tipo de obra,0.124031,0.058361,0.065671,112.525847,0.015773,0.014017,False,False
+07,Chiapas,Electricidad y telecomunicaciones,tipo de obra,0.882868,0.956637,-0.073769,-7.711247,-0.017718,0.229769,True,True
+08,Chihuahua,Electricidad y telecomunicaciones,tipo de obra,0.457479,0.585281,-0.127802,-21.83608,-0.030696,0.140575,True,True
+09,Ciudad de México,Electricidad y telecomunicaciones,tipo de obra,1.83647,2.134123,-0.297652,-13.947284,-0.071491,0.512582,True,True
+10,Durango,Electricidad y telecomunicaciones,tipo de obra,0.155689,0.186096,-0.030407,-16.339354,-0.007303,0.044697,False,False
+11,Guanajuato,Electricidad y telecomunicaciones,tipo de obra,1.507717,1.025762,0.481956,46.985131,0.115758,0.246372,True,False
+12,Guerrero,Electricidad y telecomunicaciones,tipo de obra,0.150256,0.182087,-0.031832,-17.481514,-0.007645,0.043734,False,False
+13,Hidalgo,Electricidad y telecomunicaciones,tipo de obra,2.96173,0.117528,2.844201,2420.013052,0.683132,0.028228,False,False
+14,Jalisco,Electricidad y telecomunicaciones,tipo de obra,1.08805,1.266188,-0.178138,-14.06885,-0.042786,0.304118,True,True
+15,México,Electricidad y telecomunicaciones,tipo de obra,0.401329,0.544688,-0.143358,-26.319374,-0.034432,0.130825,True,True
+16,Michoacán de Ocampo,Electricidad y telecomunicaciones,tipo de obra,0.175041,0.244535,-0.069494,-28.418893,-0.016691,0.058733,False,False
+17,Morelos,Electricidad y telecomunicaciones,tipo de obra,0.112078,0.063238,0.04884,77.230892,0.01173,0.015189,False,False
+18,Nayarit,Electricidad y telecomunicaciones,tipo de obra,0.036248,0.044063,-0.007816,-17.737204,-0.001877,0.010583,False,False
+19,Nuevo León,Electricidad y telecomunicaciones,tipo de obra,4.977852,2.724982,2.25287,82.674686,0.541103,0.654497,True,False
+20,Oaxaca,Electricidad y telecomunicaciones,tipo de obra,0.405396,0.59643,-0.191034,-32.029577,-0.045883,0.143253,True,True
+21,Puebla,Electricidad y telecomunicaciones,tipo de obra,0.731111,0.548577,0.182534,33.274101,0.043842,0.131759,True,False
+22,Querétaro,Electricidad y telecomunicaciones,tipo de obra,0.519989,0.45389,0.066099,14.562863,0.015876,0.109017,True,False
+23,Quintana Roo,Electricidad y telecomunicaciones,tipo de obra,3.024672,2.237975,0.786697,35.152204,0.188952,0.537526,True,False
+24,San Luis Potosí,Electricidad y telecomunicaciones,tipo de obra,0.716919,0.393735,0.323184,82.081533,0.077624,0.094569,False,False
+25,Sinaloa,Electricidad y telecomunicaciones,tipo de obra,1.038449,0.631623,0.406826,64.409585,0.097713,0.151706,True,False
+26,Sonora,Electricidad y telecomunicaciones,tipo de obra,0.343785,1.234978,-0.891193,-72.162685,-0.21405,0.296622,True,True
+27,Tabasco,Electricidad y telecomunicaciones,tipo de obra,0.057056,0.047521,0.009534,20.06309,0.00229,0.011414,False,False
+28,Tamaulipas,Electricidad y telecomunicaciones,tipo de obra,0.039791,0.242019,-0.202228,-83.558738,-0.048572,0.058129,False,False
+29,Tlaxcala,Electricidad y telecomunicaciones,tipo de obra,0.00287,0.004638,-0.001768,-38.118596,-0.000425,0.001114,False,False
+30,Veracruz de Ignacio de la Llave,Electricidad y telecomunicaciones,tipo de obra,0.614835,0.738638,-0.123803,-16.760984,-0.029735,0.177409,True,True
+31,Yucatán,Electricidad y telecomunicaciones,tipo de obra,1.31431,1.306532,0.007778,0.595307,0.001868,0.313808,True,False
+32,Zacatecas,Electricidad y telecomunicaciones,tipo de obra,0.025562,0.080657,-0.055095,-68.308206,-0.013233,0.019372,False,False
+01,Aguascalientes,Transporte y urbanización,tipo de obra,0.926167,0.801447,0.12472,15.561842,0.029956,0.192495,True,False
+02,Baja California,Transporte y urbanización,tipo de obra,1.691998,1.979341,-0.287344,-14.51714,-0.069015,0.475406,True,True
+03,Baja California Sur,Transporte y urbanización,tipo de obra,0.358308,0.548821,-0.190513,-34.713117,-0.045758,0.131818,True,True
+04,Campeche,Transporte y urbanización,tipo de obra,0.500094,3.55283,-3.052736,-85.924066,-0.733218,0.853333,True,True
+05,Coahuila de Zaragoza,Transporte y urbanización,tipo de obra,2.820141,2.717549,0.102592,3.775158,0.024641,0.652712,True,False
+06,Colima,Transporte y urbanización,tipo de obra,0.818006,0.639801,0.178205,27.853265,0.042802,0.15367,True,False
+07,Chiapas,Transporte y urbanización,tipo de obra,2.414178,3.735373,-1.321194,-35.369812,-0.31733,0.897177,True,True
+08,Chihuahua,Transporte y urbanización,tipo de obra,1.528199,1.718236,-0.190037,-11.059991,-0.045644,0.412693,True,True
+09,Ciudad de México,Transporte y urbanización,tipo de obra,4.312931,2.912886,1.400046,48.06388,0.336269,0.699628,True,False
+10,Durango,Transporte y urbanización,tipo de obra,0.732499,1.230548,-0.498049,-40.473767,-0.119623,0.295558,True,True
+11,Guanajuato,Transporte y urbanización,tipo de obra,2.885988,5.108609,-2.222621,-43.507364,-0.533838,1.227006,True,True
+12,Guerrero,Transporte y urbanización,tipo de obra,0.865334,0.791972,0.073362,9.263254,0.01762,0.190219,True,False
+13,Hidalgo,Transporte y urbanización,tipo de obra,14.718872,2.965351,11.753521,396.361874,2.823007,0.71223,True,False
+14,Jalisco,Transporte y urbanización,tipo de obra,6.069474,7.383097,-1.313623,-17.792299,-0.315511,1.773302,True,True
+15,México,Transporte y urbanización,tipo de obra,21.102654,7.295526,13.807129,189.254753,3.316251,1.752268,True,False
+16,Michoacán de Ocampo,Transporte y urbanización,tipo de obra,0.772944,0.690262,0.082683,11.978444,0.019859,0.16579,True,False
+17,Morelos,Transporte y urbanización,tipo de obra,0.103855,0.119078,-0.015223,-12.784048,-0.003656,0.028601,False,False
+18,Nayarit,Transporte y urbanización,tipo de obra,1.194737,1.042987,0.15175,14.549533,0.036448,0.250509,True,False
+19,Nuevo León,Transporte y urbanización,tipo de obra,10.429629,10.738303,-0.308675,-2.87452,-0.074139,2.579169,True,True
+20,Oaxaca,Transporte y urbanización,tipo de obra,0.842744,1.735202,-0.892458,-51.43253,-0.214354,0.416768,True,True
+21,Puebla,Transporte y urbanización,tipo de obra,0.982278,1.270014,-0.287736,-22.656156,-0.06911,0.305037,True,True
+22,Querétaro,Transporte y urbanización,tipo de obra,7.716049,1.452516,6.263532,431.219453,1.5044,0.348871,True,False
+23,Quintana Roo,Transporte y urbanización,tipo de obra,2.769312,10.451562,-7.68225,-73.503367,-1.845153,2.510298,True,True
+24,San Luis Potosí,Transporte y urbanización,tipo de obra,2.502195,1.916076,0.586119,30.589566,0.140776,0.460211,True,False
+25,Sinaloa,Transporte y urbanización,tipo de obra,1.032912,0.912132,0.12078,13.241534,0.029009,0.219079,True,False
+26,Sonora,Transporte y urbanización,tipo de obra,1.696372,2.093383,-0.39701,-18.96502,-0.095356,0.502797,True,True
+27,Tabasco,Transporte y urbanización,tipo de obra,1.378681,1.37513,0.003551,0.258224,0.000853,0.330284,True,False
+28,Tamaulipas,Transporte y urbanización,tipo de obra,0.970743,0.806223,0.16452,20.40631,0.039515,0.193642,True,False
+29,Tlaxcala,Transporte y urbanización,tipo de obra,0.103515,0.100836,0.002678,2.656208,0.000643,0.024219,False,False
+30,Veracruz de Ignacio de la Llave,Transporte y urbanización,tipo de obra,2.687335,1.692025,0.99531,58.823579,0.239057,0.406397,True,False
+31,Yucatán,Transporte y urbanización,tipo de obra,1.152082,2.932609,-1.780527,-60.714774,-0.427654,0.704366,True,True
+32,Zacatecas,Transporte y urbanización,tipo de obra,0.577159,0.272255,0.304904,111.991883,0.073233,0.065391,False,False
+01,Aguascalientes,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+02,Baja California,Petróleo y petroquímica,tipo de obra,0.905421,1.851643,-0.946223,-51.101784,-0.227268,0.444735,True,True
+03,Baja California Sur,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+04,Campeche,Petróleo y petroquímica,tipo de obra,5.627432,7.228511,-1.60108,-22.149506,-0.384554,1.736173,True,True
+05,Coahuila de Zaragoza,Petróleo y petroquímica,tipo de obra,1.099528,1.016639,0.082889,8.153272,0.019909,0.24418,True,False
+06,Colima,Petróleo y petroquímica,tipo de obra,0.0,0.002257,-0.002257,-100.0,-0.000542,0.000542,False,False
+07,Chiapas,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+08,Chihuahua,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+09,Ciudad de México,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+10,Durango,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+11,Guanajuato,Petróleo y petroquímica,tipo de obra,0.377934,0.600642,-0.222708,-37.078308,-0.053491,0.144265,True,True
+12,Guerrero,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+13,Hidalgo,Petróleo y petroquímica,tipo de obra,2.464966,7.395647,-4.930682,-66.670047,-1.184271,1.776316,True,True
+14,Jalisco,Petróleo y petroquímica,tipo de obra,0.133962,0.0,0.133962,,0.032175,0.0,False,False
+15,México,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+16,Michoacán de Ocampo,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+17,Morelos,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+18,Nayarit,Petróleo y petroquímica,tipo de obra,0.001735,0.15798,-0.156245,-98.901665,-0.037527,0.037944,False,False
+19,Nuevo León,Petróleo y petroquímica,tipo de obra,0.047203,0.02031,0.026893,132.412282,0.006459,0.004878,False,False
+20,Oaxaca,Petróleo y petroquímica,tipo de obra,2.544973,5.236809,-2.691836,-51.402217,-0.646536,1.257798,True,True
+21,Puebla,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+22,Querétaro,Petróleo y petroquímica,tipo de obra,0.029456,0.016251,0.013206,81.261729,0.003172,0.003903,False,False
+23,Quintana Roo,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+24,San Luis Potosí,Petróleo y petroquímica,tipo de obra,0.032293,0.020599,0.011694,56.773306,0.002809,0.004947,False,False
+25,Sinaloa,Petróleo y petroquímica,tipo de obra,0.001754,0.0,0.001754,,0.000421,0.0,False,False
+26,Sonora,Petróleo y petroquímica,tipo de obra,0.0,0.001894,-0.001894,-100.0,-0.000455,0.000455,False,False
+27,Tabasco,Petróleo y petroquímica,tipo de obra,4.721576,5.304154,-0.582577,-10.983414,-0.139926,1.273973,True,True
+28,Tamaulipas,Petróleo y petroquímica,tipo de obra,0.911856,0.853067,0.058789,6.891533,0.01412,0.204893,True,False
+29,Tlaxcala,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+30,Veracruz de Ignacio de la Llave,Petróleo y petroquímica,tipo de obra,1.477316,2.972637,-1.495321,-50.302843,-0.359152,0.71398,True,True
+31,Yucatán,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+32,Zacatecas,Petróleo y petroquímica,tipo de obra,0.0,0.0,0.0,,0.0,0.0,False,False
+01,Aguascalientes,Otras construcciones,tipo de obra,0.512118,0.495621,0.016496,3.328383,0.003962,0.11904,True,False
+02,Baja California,Otras construcciones,tipo de obra,2.194781,1.612308,0.582473,36.126636,0.139901,0.387251,True,False
+03,Baja California Sur,Otras construcciones,tipo de obra,0.646427,0.603527,0.0429,7.108273,0.010304,0.144957,True,False
+04,Campeche,Otras construcciones,tipo de obra,2.415376,3.062574,-0.647199,-21.132502,-0.155447,0.735581,True,True
+05,Coahuila de Zaragoza,Otras construcciones,tipo de obra,1.219814,1.63688,-0.417066,-25.479312,-0.100173,0.393152,True,True
+06,Colima,Otras construcciones,tipo de obra,0.36582,0.254486,0.111334,43.748778,0.026741,0.061123,False,False
+07,Chiapas,Otras construcciones,tipo de obra,0.09492,0.185661,-0.090741,-48.874624,-0.021795,0.044593,False,False
+08,Chihuahua,Otras construcciones,tipo de obra,1.845079,1.937076,-0.091996,-4.749242,-0.022096,0.465255,True,True
+09,Ciudad de México,Otras construcciones,tipo de obra,7.430329,7.298727,0.131601,1.803074,0.031609,1.753037,True,False
+10,Durango,Otras construcciones,tipo de obra,0.348472,0.57206,-0.223588,-39.084734,-0.053702,0.1374,True,True
+11,Guanajuato,Otras construcciones,tipo de obra,0.988386,0.786798,0.201588,25.621322,0.048418,0.188976,True,False
+12,Guerrero,Otras construcciones,tipo de obra,0.594768,0.460361,0.134407,29.195903,0.032282,0.110571,True,False
+13,Hidalgo,Otras construcciones,tipo de obra,0.642589,1.184655,-0.542066,-45.757309,-0.130196,0.284535,True,True
+14,Jalisco,Otras construcciones,tipo de obra,4.075678,4.911142,-0.835463,-17.011592,-0.200665,1.179578,True,True
+15,México,Otras construcciones,tipo de obra,4.360278,3.621907,0.738371,20.386264,0.177345,0.869924,True,False
+16,Michoacán de Ocampo,Otras construcciones,tipo de obra,0.713997,0.423312,0.290685,68.669234,0.069818,0.101673,True,False
+17,Morelos,Otras construcciones,tipo de obra,0.373002,0.308878,0.064125,20.760501,0.015402,0.074187,False,False
+18,Nayarit,Otras construcciones,tipo de obra,0.346553,0.283936,0.062616,22.052975,0.015039,0.068197,False,False
+19,Nuevo León,Otras construcciones,tipo de obra,6.348565,7.449202,-1.100637,-14.775227,-0.264355,1.789179,True,True
+20,Oaxaca,Otras construcciones,tipo de obra,0.274182,0.360415,-0.086233,-23.926003,-0.020712,0.086566,False,False
+21,Puebla,Otras construcciones,tipo de obra,1.055142,1.711836,-0.656694,-38.361952,-0.157727,0.411156,True,True
+22,Querétaro,Otras construcciones,tipo de obra,2.179007,2.95019,-0.771183,-26.140102,-0.185226,0.708588,True,True
+23,Quintana Roo,Otras construcciones,tipo de obra,0.878297,0.779757,0.09854,12.637217,0.023668,0.187285,True,False
+24,San Luis Potosí,Otras construcciones,tipo de obra,1.069466,1.185805,-0.116339,-9.810998,-0.027943,0.284811,True,True
+25,Sinaloa,Otras construcciones,tipo de obra,2.073514,2.457588,-0.384073,-15.628068,-0.092248,0.590273,True,True
+26,Sonora,Otras construcciones,tipo de obra,6.838726,7.230683,-0.391957,-5.420752,-0.094142,1.736694,True,True
+27,Tabasco,Otras construcciones,tipo de obra,0.82001,0.459296,0.360714,78.536285,0.086638,0.110316,True,False
+28,Tamaulipas,Otras construcciones,tipo de obra,2.791706,2.087777,0.703929,33.716688,0.169073,0.501451,True,False
+29,Tlaxcala,Otras construcciones,tipo de obra,0.087033,0.064092,0.022941,35.793273,0.00551,0.015394,False,False
+30,Veracruz de Ignacio de la Llave,Otras construcciones,tipo de obra,2.129429,2.095211,0.034218,1.633148,0.008219,0.503236,True,False
+31,Yucatán,Otras construcciones,tipo de obra,0.707219,0.770038,-0.062819,-8.157859,-0.015088,0.184951,True,True
+32,Zacatecas,Otras construcciones,tipo de obra,0.780499,0.710742,0.069757,9.814635,0.016754,0.170709,True,False
+01,Aguascalientes,Sector público,quién contrata,0.610245,0.44075,0.169495,38.456046,0.04071,0.105861,True,False
+02,Baja California,Sector público,quién contrata,2.123995,3.972277,-1.848282,-46.529533,-0.443928,0.954077,True,True
+03,Baja California Sur,Sector público,quién contrata,0.425023,0.511791,-0.086768,-16.953717,-0.02084,0.122924,True,True
+04,Campeche,Sector público,quién contrata,8.30811,13.74188,-5.43377,-39.541677,-1.305105,3.30058,True,True
+05,Coahuila de Zaragoza,Sector público,quién contrata,3.979693,5.297172,-1.317479,-24.871371,-0.316437,1.272296,True,True
+06,Colima,Sector público,quién contrata,1.597315,0.325462,1.271852,390.783048,0.305479,0.078171,False,False
+07,Chiapas,Sector público,quién contrata,3.367671,4.784633,-1.416962,-29.614849,-0.340332,1.149192,True,True
+08,Chihuahua,Sector público,quién contrata,1.690946,2.976515,-1.285569,-43.190409,-0.308773,0.714911,True,True
+09,Ciudad de México,Sector público,quién contrata,7.987047,5.699757,2.28729,40.1296,0.54937,1.36899,True,False
+10,Durango,Sector público,quién contrata,0.305555,1.468393,-1.162838,-79.191212,-0.279295,0.352684,True,True
+11,Guanajuato,Sector público,quién contrata,4.973476,7.015082,-2.041606,-29.103091,-0.490361,1.68491,True,True
+12,Guerrero,Sector público,quién contrata,0.964996,0.997446,-0.032449,-3.253237,-0.007794,0.23957,True,True
+13,Hidalgo,Sector público,quién contrata,20.442088,10.595176,9.846912,92.937695,2.365071,2.544792,True,False
+14,Jalisco,Sector público,quién contrata,7.229216,7.708845,-0.479629,-6.221803,-0.115199,1.851541,True,True
+15,México,Sector público,quién contrata,22.915308,7.167061,15.748247,219.730898,3.782477,1.721413,True,False
+16,Michoacán de Ocampo,Sector público,quién contrata,0.927668,0.831159,0.096509,11.611329,0.02318,0.199631,True,False
+17,Morelos,Sector público,quién contrata,0.117866,0.206057,-0.088191,-42.799303,-0.021182,0.049492,False,False
+18,Nayarit,Sector público,quién contrata,1.037792,2.06527,-1.027478,-49.7503,-0.246784,0.496045,True,True
+19,Nuevo León,Sector público,quién contrata,8.323861,5.941183,2.382678,40.104435,0.572281,1.426977,True,False
+20,Oaxaca,Sector público,quién contrata,3.829932,8.488686,-4.658755,-54.881928,-1.118958,2.038847,True,True
+21,Puebla,Sector público,quién contrata,1.463118,2.710132,-1.247014,-46.013043,-0.299513,0.65093,True,True
+22,Querétaro,Sector público,quién contrata,7.442007,1.072779,6.369228,593.713084,1.529787,0.257664,True,False
+23,Quintana Roo,Sector público,quién contrata,2.557807,10.329389,-7.771583,-75.23758,-1.86661,2.480954,True,True
+24,San Luis Potosí,Sector público,quién contrata,2.740997,2.141117,0.59988,28.017141,0.144082,0.514262,True,False
+25,Sinaloa,Sector público,quién contrata,1.793851,1.400105,0.393746,28.122575,0.094571,0.336283,True,False
+26,Sonora,Sector público,quién contrata,4.185107,6.829501,-2.644393,-38.720156,-0.635141,1.640337,True,True
+27,Tabasco,Sector público,quién contrata,6.37762,7.015429,-0.637809,-9.091517,-0.153191,1.684994,True,True
+28,Tamaulipas,Sector público,quién contrata,3.676591,2.898344,0.778247,26.851432,0.186922,0.696136,True,False
+29,Tlaxcala,Sector público,quién contrata,0.281277,0.140213,0.141065,100.607682,0.033881,0.033677,False,False
+30,Veracruz de Ignacio de la Llave,Sector público,quién contrata,5.353579,4.685163,0.668415,14.266637,0.160543,1.125301,True,False
+31,Yucatán,Sector público,quién contrata,1.540017,3.653717,-2.1137,-57.850671,-0.507677,0.877564,True,True
+32,Zacatecas,Sector público,quién contrata,0.670705,0.292856,0.377849,129.02212,0.090753,0.070339,False,False
+01,Aguascalientes,Sector privado,quién contrata,4.980322,4.93376,0.046562,0.943746,0.011183,1.18501,True,False
+02,Baja California,Sector privado,quién contrata,15.649765,14.575373,1.074392,7.371283,0.258052,3.500771,True,False
+03,Baja California Sur,Sector privado,quién contrata,6.749544,7.324448,-0.574904,-7.849111,-0.138083,1.759215,True,True
+04,Campeche,Sector privado,quién contrata,0.928398,0.860131,0.068266,7.936723,0.016396,0.20659,True,False
+05,Coahuila de Zaragoza,Sector privado,quién contrata,11.167795,12.798029,-1.630234,-12.738163,-0.391556,3.073882,True,True
+06,Colima,Sector privado,quién contrata,1.81286,2.37091,-0.55805,-23.537379,-0.134035,0.569455,True,True
+07,Chiapas,Sector privado,quién contrata,1.700011,1.492119,0.207892,13.932637,0.049932,0.358383,True,False
+08,Chihuahua,Sector privado,quién contrata,12.257237,15.10709,-2.849853,-18.86434,-0.684489,3.628481,True,True
+09,Ciudad de México,Sector privado,quién contrata,18.07423,19.473028,-1.398798,-7.183258,-0.335969,4.677109,True,True
+10,Durango,Sector privado,quién contrata,2.116231,2.740457,-0.624226,-22.778169,-0.149929,0.658214,True,True
+11,Guanajuato,Sector privado,quién contrata,14.408072,11.59771,2.810362,24.232043,0.675004,2.785584,True,False
+12,Guerrero,Sector privado,quién contrata,2.686139,2.622266,0.063873,2.435813,0.015341,0.629826,True,False
+13,Hidalgo,Sector privado,quién contrata,3.825766,3.448591,0.377175,10.937085,0.090591,0.828296,True,False
+14,Jalisco,Sector privado,quién contrata,22.464444,22.402822,0.061622,0.275063,0.014801,5.380799,True,False
+15,México,Sector privado,quién contrata,14.346392,18.319838,-3.973446,-21.689306,-0.954358,4.400132,True,True
+16,Michoacán de Ocampo,Sector privado,quién contrata,3.041169,2.96069,0.080479,2.718245,0.01933,0.71111,True,False
+17,Morelos,Sector privado,quién contrata,1.696312,1.608868,0.087444,5.43513,0.021003,0.386424,True,False
+18,Nayarit,Sector privado,quién contrata,3.260598,3.427284,-0.166686,-4.863497,-0.040035,0.823179,True,True
+19,Nuevo León,Sector privado,quién contrata,43.852137,44.717254,-0.865116,-1.934637,-0.207787,10.740368,True,True
+20,Oaxaca,Sector privado,quién contrata,1.645982,1.755359,-0.109377,-6.231034,-0.026271,0.421609,True,True
+21,Puebla,Sector privado,quién contrata,4.911119,5.589216,-0.678097,-12.132234,-0.162868,1.34244,True,True
+22,Querétaro,Sector privado,quién contrata,13.321877,15.426315,-2.104439,-13.641875,-0.505452,3.705154,True,True
+23,Quintana Roo,Sector privado,quién contrata,10.008407,10.5634,-0.554993,-5.253927,-0.133301,2.53716,True,True
+24,San Luis Potosí,Sector privado,quién contrata,6.556926,7.205257,-0.648331,-8.998025,-0.155719,1.730587,True,True
+25,Sinaloa,Sector privado,quién contrata,6.38321,7.308035,-0.924825,-12.654903,-0.222128,1.755273,True,True
+26,Sonora,Sector privado,quién contrata,15.388275,15.023073,0.365202,2.430942,0.087716,3.608302,True,False
+27,Tabasco,Sector privado,quién contrata,1.85779,1.501112,0.356679,23.76096,0.085668,0.360543,True,False
+28,Tamaulipas,Sector privado,quién contrata,8.460409,7.794633,0.665776,8.541466,0.159909,1.872146,True,False
+29,Tlaxcala,Sector privado,quién contrata,0.459092,0.310571,0.148521,47.822004,0.035672,0.074594,False,False
+30,Veracruz de Ignacio de la Llave,Sector privado,quién contrata,8.564813,7.71987,0.844942,10.945032,0.202942,1.854189,True,False
+31,Yucatán,Sector privado,quién contrata,8.295253,7.885219,0.410034,5.200033,0.098484,1.893903,True,False
+32,Zacatecas,Sector privado,quién contrata,1.895952,2.081416,-0.185464,-8.910475,-0.044545,0.499923,True,True

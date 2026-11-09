@@ -1,0 +1,55 @@
+{
+ "total_prev_mmdp": 416.3474870743391,
+ "celdas_relevantes": 125,
+ "celdas_totales": 192,
+ "celdas_que_caen": 73,
+ "valor_cubierto_pct": 98.32023804168723,
+ "valor_prev_en_celdas_que_caen_pct": 61.807685223690065,
+ "mediana_ponderada_celdas_pct": -6.424373823267448,
+ "umbrales": {
+  "0.05%": {
+   "celdas": 140,
+   "valor_prev_en_celdas_que_caen_pct": 62.225741827487354,
+   "mediana_ponderada_pct": -6.424373823267448
+  },
+  "0.10%": {
+   "celdas": 125,
+   "valor_prev_en_celdas_que_caen_pct": 61.807685223690065,
+   "mediana_ponderada_pct": -6.424373823267448
+  },
+  "0.25%": {
+   "celdas": 86,
+   "valor_prev_en_celdas_que_caen_pct": 59.28702101884501,
+   "mediana_ponderada_pct": -9.290218105695669
+  }
+ },
+ "titulares": {
+  "Variación del mes (ago-2026 vs. ago-2025)": {
+   "delta_pct": 10.65197025098552,
+   "estados_que_caen": 11,
+   "estados": 32,
+   "valor_prev_en_caida_pct": 37.626581202969646,
+   "mediana_ponderada_estados_pct": 1.034783391342442
+  },
+  "Acumulado del año (ene-ago 2026 vs. ene-ago 2025)": {
+   "delta_pct": 4.3575243006657605,
+   "estados_que_caen": 17,
+   "estados": 32,
+   "valor_prev_en_caida_pct": 63.141719097220715,
+   "mediana_ponderada_estados_pct": -2.8880761705430524
+  },
+  "Acumulado de 12 meses (sep-2025 a ago-2026 vs. previos)": {
+   "delta_pct": -1.0425134142202697,
+   "estados_que_caen": 18,
+   "estados": 32,
+   "valor_prev_en_caida_pct": 53.913668607420405,
+   "mediana_ponderada_estados_pct": -1.3881901760706916
+  }
+ },
+ "regla_caida_oculta": "titular > 0 y más de 40% del valor previo en estados que caen, o mediana ponderada negativa",
+ "caida_oculta_por_titular": {
+  "Variación del mes (ago-2026 vs. ago-2025)": false,
+  "Acumulado del año (ene-ago 2026 vs. ene-ago 2025)": true,
+  "Acumulado de 12 meses (sep-2025 a ago-2026 vs. previos)": false
+ }
+}

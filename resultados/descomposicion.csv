@@ -1,0 +1,9 @@
+segmento,tipo_segmento,acum12_real_mmdp_2018,acum12_prev_real_mmdp_2018,delta_mmdp_2018,contrib_pp,dpct
+"Agua, riego y saneamiento",tipo de obra,13.718425,16.102528,-2.384103,-0.572623,-14.805768
+Edificación,tipo de obra,195.599892,203.090542,-7.49065,-1.799134,-3.68833
+Electricidad y telecomunicaciones,tipo de obra,26.452716,21.540856,4.91186,1.17975,22.80253
+Otras construcciones,tipo de obra,57.201183,59.952541,-2.751359,-0.660832,-4.589228
+Petróleo y petroquímica,tipo de obra,20.377406,32.67904,-12.301634,-2.954655,-37.643804
+Sector privado,quién contrata,272.766529,282.944145,-10.177617,-2.444501,-3.597041
+Sector público,quién contrata,139.24048,133.403342,5.837138,1.401987,4.375556
+Transporte y urbanización,tipo de obra,98.657385,82.981979,15.675406,3.764982,18.890133

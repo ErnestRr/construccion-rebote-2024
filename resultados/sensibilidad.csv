@@ -1,0 +1,10 @@
+escenario,titular,delta_pct,estados_que_caen,estados,valor_prev_en_caida_pct,mediana_ponderada_estados_pct
+Todos los estados,Variación del mes (ago-2026 vs. ago-2025),10.652,11,32,37.6266,1.0348
+Todos los estados,Acumulado del año (ene-ago 2026 vs. ene-ago 2025),4.3575,17,32,63.1417,-2.8881
+Todos los estados,Acumulado de 12 meses (sep-2025 a ago-2026 vs. previos),-1.0425,18,32,53.9137,-1.3882
+Sin México ni Hidalgo,Variación del mes (ago-2026 vs. ago-2025),4.7837,11,30,42.1015,1.0348
+Sin México ni Hidalgo,Acumulado del año (ene-ago 2026 vs. ene-ago 2025),-3.1851,17,30,69.8065,-5.9967
+Sin México ni Hidalgo,Acumulado de 12 meses (sep-2025 a ago-2026 vs. previos),-6.99,18,30,59.5696,-1.3882
+Sin petróleo y petroquímica,Variación del mes (ago-2026 vs. ago-2025),7.902,13,32,40.4589,0.6858
+Sin petróleo y petroquímica,Acumulado del año (ene-ago 2026 vs. ene-ago 2025),5.1333,16,32,59.5774,-2.9451
+Sin petróleo y petroquímica,Acumulado de 12 meses (sep-2025 a ago-2026 vs. previos),2.075,16,32,47.8907,1.0322

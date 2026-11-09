@@ -1,0 +1,20 @@
+{
+  "analisis": "05",
+  "corte": "2026-08-01",
+  "pregunta": "¿El crecimiento nacional está ocultando una caída en tu mercado? (título provisional: no presupone que exista una caída oculta)",
+  "universo": "32 entidades federativas; mercados = entidad x tipo de obra (6 tipos) y entidad x sector contratante (público, privado)",
+  "medida_principal": "valor de producción real (pesos constantes de 2018), acumulado de 12 meses contra los 12 meses previos",
+  "titulares_a_contrastar": {
+    "mes": "variación del mes (ago-2026 vs ago-2025), suma de los 32 estados",
+    "anio_corrido": "ene-ago 2026 vs ene-ago 2025",
+    "acumulado_12m": "sep-2025 a ago-2026 vs 12 meses previos"
+  },
+  "criterios_fijados_antes_de_ver_resultados": {
+    "mercado_relevante": "celda cuyo acumulado 12m previo (real) sea al menos 0.1% del total nacional; las demás se muestran pero no entran en los conteos",
+    "ponderacion": "las comparaciones entre el total y las partes usan como peso el acumulado 12m previo; no se promedian tasas estatales sin ponderar",
+    "divergencia_relevante": "hay caída oculta si, con el titular positivo, más de 40% del valor previo está en mercados que caen, o si la mediana ponderada de los mercados es negativa",
+    "contribucion": "aporte de cada parte al total = cambio del monto real de la parte / acumulado previo nacional (puntos porcentuales; suman el total)",
+    "sensibilidad": ["titular (mes, año corrido, 12m)", "sin México e Hidalgo", "sin petróleo y petroquímica", "umbral de mercado relevante 0.05% y 0.25%"]
+  },
+  "no_se_calcula": "variaciones en pesos corrientes (no son reales)"
+}
