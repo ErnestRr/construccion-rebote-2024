@@ -5,6 +5,8 @@
 ## Objetivo
 Comprobar si el crecimiento nacional de la construcción que se reporta en los titulares refleja lo que pasa en el mercado de una empresa concreta (su estado, su tipo de obra y su tipo de cliente), o si lo esconde. La decisión que busco apoyar es de dirección: con qué número fijar la meta de ventas y el presupuesto de inversión del año.
 
+![Resumen: 63% del valor está en estados que caen aunque el titular del año corrido es +4.4%](graficas/resumen_ejecutivo.png)
+
 ## Pregunta
 ¿Presupuestar con el titular nacional es razonable, o hay una caída oculta en los mercados que lo componen?
 
@@ -29,6 +31,12 @@ Fijé los criterios antes de ver los resultados (están en `src/config.json`):
 4. **Del agregado al detalle:** 73 de 125 mercados (estado × tipo de obra) caen. Concentran 61.8% del valor y su mediana ponderada es −6.4%. Con otros umbrales, entre 59% y 62% del valor cae.
 5. **El titular depende de dos estados:** sin México e Hidalgo, el año corrido pasa de +4.4% a −3.2%.
 
+### Tres titulares, tres lecturas
+![Parte del valor en estados que caen, según el titular](graficas/titulares_y_estados_que_caen.png)
+
+### Qué parte sostiene y cuál resta (12 meses)
+![Variación real y aporte por tipo de obra y tipo de cliente](graficas/aporte_por_tipo_de_obra.png)
+
 ## Implicación para la gestión
 Un titular nacional es un promedio de mercados muy distintos. Presupuestar con él puede sobreestimar ventas si el mercado propio es edificación o clientes privados. La recomendación es definir el mercado propio y comparar cada mes su variación real contra el titular. Regla propuesta, a validar con datos de cada empresa: si la brecha es menor a −5 puntos durante tres cortes seguidos, revisar el plan comercial.
 
@@ -43,6 +51,7 @@ Un titular nacional es un promedio de mercados muy distintos. Presupuestar con �
 ## Contenido
 - [`index.html`](https://ernestrr.github.io/construccion-titular-vs-mercado/): tablero interactivo (selector de estado y de tipo de obra o cliente).
 - `resultados/`: tablas (`resultados.csv`, `titulares.csv`, `descomposicion.csv`, `sensibilidad.csv`, `series_segmentos.csv`), `cifras_clave.json`, `informe.md` y `metodologia.md`.
+- `graficas/`: imágenes del resumen y de los hallazgos.
 - `src/`: `calcular.py` (cifras), `construir_entregables.py` (tablero), `plantilla.html`, `config.json` y las fuentes tipográficas.
 
 ## Reproducir
