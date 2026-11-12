@@ -359,7 +359,7 @@ def _card(titulo, nota, cuerpo, extra=""):
     return f'<section class="card graf"><h2>{titulo}</h2><p class="nota" style="margin:0 0 6px">{nota}</p>{cuerpo}{extra}</section>'
 
 
-def barras_grupos(filas, W=740, L=200, RR=52, barh=13, fila_h=None, fmt=lambda v: f'{"+" if v > 0 else "−"}{abs(v):.1f}', escala=None):
+def barras_grupos(filas, W=740, L=200, RR=52, barh=13, fila_h=None, fmt=lambda v: f'{"+" if v > 0 else "−"}{abs(v):.1f}', escala=None, color=None):
     """filas: ('g', titulo) o (etiqueta, [(valor, opacidad), ...])."""
     todos = [abs(v) for f in filas if f[0] != "g" for v, _ in f[1]]
     mx = escala or max(todos)
@@ -375,8 +375,8 @@ def barras_grupos(filas, W=740, L=200, RR=52, barh=13, fila_h=None, fmt=lambda v
         h = fila_h or (len(vals) * (barh + 4) + 8)
         out += f'<text x="0" y="{y + h / 2 + 5}" font-size="15" font-weight="600" fill="#1B1F27">{et}</text>'
         for j, (v, op) in enumerate(vals):
-            col = VERDE_ if v > 0 else VINO_
-            w = abs(v) * k
+            col = color or (VERDE_ if v > 0 else VINO_)
+            w = min(abs(v), mx) * k
             x = cx if v > 0 else cx - w
             yy = y + 4 + j * (barh + 4)
             out += f'<rect x="{x:.1f}" y="{yy}" width="{max(w, 1.5):.1f}" height="{barh}" fill="{col}" opacity="{op}"/>'
@@ -433,8 +433,8 @@ CH_SENS = _card("Sin unos pocos estados o sin petróleo", "Cada grupo: mes, ener
 
 
 # --- burbujas: los 32 estados contra 2025 y contra 2024
-def burbujas():
-    W, H, L, R_, T_, B_ = 740, 470, 52, 16, 14, 44
+def burbujas(W=740):
+    H, L, R_, T_, B_ = 470, 52, 16, 14, 44
     xr, yr = (-45, 140), (-85, 115)
     X = lambda v: L + (v - xr[0]) / (xr[1] - xr[0]) * (W - L - R_)
     Y = lambda v: T_ + (yr[1] - v) / (yr[1] - yr[0]) * (H - T_ - B_)
@@ -461,32 +461,46 @@ def burbujas():
     return f'<svg viewBox="0 0 {W} {H}" width="100%">{s}</svg>'
 
 
-CH_BURB = _card("Cada estado: rebote contra nivel", "Eje horizontal: cuánto rebota contra 2025. Eje vertical: dónde queda contra 2024. Tamaño = peso en el valor.", burbujas())
+CH_BURB = _card("Cada estado: rebote contra nivel", "Horizontal: rebote contra 2025. Vertical: nivel contra 2024. Tamaño = peso en el valor.", burbujas(520))
 
 # --- aporte por estado
 _tot25 = float(ET.ene_ago_2025.sum())
 _ET2 = ET.assign(ap=(ET.ene_ago_2026 - ET.ene_ago_2025) / _tot25 * 100)
 _sel = pd.concat([_ET2.sort_values("ap", ascending=False).head(7), _ET2.sort_values("ap").head(7)]).sort_values("ap", ascending=False)
 _fe = [(CORTO_E.get(r_.entidad, r_.entidad), [(float(r_.ap), 1)]) for r_ in _sel.itertuples()]
-CH_APEST = _card("Estados que más suman y más restan", "Puntos que cada estado suma o resta a la cifra nacional, 2026 contra 2025.", barras_grupos(_fe, fila_h=24, escala=4.2))
+CH_APEST = _card("Estados que más suman y más restan", "Puntos que cada estado suma o resta a la cifra nacional, 2026 contra 2025.", barras_grupos(_fe, W=520, L=96, RR=48, fila_h=24, escala=4.2))
 
 # --- brecha contra 2024 por estado (estados con al menos 1% del valor)
 _g = ET[ET.peso_nacional_2025_pct >= 1].sort_values("var_26_vs_24_pct")
 _sel2 = pd.concat([_g.head(7), _g.tail(7)]).sort_values("var_26_vs_24_pct", ascending=False)
 _f2 = [(CORTO_E.get(r_.entidad, r_.entidad), [(float(r_.var_26_vs_24_pct), 1)]) for r_ in _sel2.itertuples()]
 CH_BRECHA = _card("Dónde está más lejos de 2024", "Variación 2026 contra 2024 de los estados con al menos 1% del valor: los 7 más arriba y los 7 más abajo.",
-                  barras_grupos(_f2, fila_h=24, fmt=lambda v: f'{"+" if v > 0 else "−"}{abs(v):.0f}%'))
+                  barras_grupos(_f2, W=520, L=96, RR=52, fila_h=24, fmt=lambda v: f'{"+" if v > 0 else "−"}{abs(v):.0f}%'))
+
+# --- cuánto falta para volver a 2024, por segmento
+_ff = [(NOMB[s_], [(float(SEG.loc[s_, "falta_para_2024_pct"]), 1)]) for s_ in sorted(_TIP + _CLI, key=lambda z: -float(SEG.loc[z, "falta_para_2024_pct"])) if float(SEG.loc[s_, "falta_para_2024_pct"]) > 0]
+CH_FALTA = _card("Cuánto falta para volver a 2024", "Crecimiento que necesita cada segmento (enero a agosto) para igualar su nivel de 2024. Barras largas recortadas.",
+                 barras_grupos(_ff, W=740, L=200, RR=60, fila_h=26, escala=60, color="#C4533A", fmt=lambda v: f'+{abs(v):.0f}%'),
+                 '<div class="nota">Electricidad y telecom. ya está arriba de 2024.</div>')
 
 # --- composición de la cuadrícula
 _secs = _re.findall(r'<section class="card graf">.*?</section>', HTML, flags=_re.S)
 assert len(_secs) == 8, len(_secs)
 _ini = HTML.index(_secs[0])
 _fin = HTML.index(_secs[-1]) + len(_secs[-1])
-_pares = [_secs[0] + _secs[1], _secs[2] + _secs[3], _secs[4] + CH_APORTES,
-          _secs[7] + '<div class="stack">' + CH_DONUTS + CH_SENS + '</div>',
-          _secs[5] + '<div class="stack">' + CH_BURB + CH_APEST + CH_BRECHA + '</div>']
-_nuevo = "".join('<div class="g2">' + p_ + "</div>" for p_ in _pares) + '<div class="g1">' + _secs[6] + "</div>"
+# la sensibilidad sale de la tarjeta de cortes y va con su gráfica
+_cortes = _re.sub(r'<h3 style=.*?</section>$', '</section>', _secs[7], flags=_re.S)
+CH_SENS_TAB = _card("Cuánto depende de unos pocos estados y del petróleo", "Cifra nacional en tres escenarios y tres cortes.", SENSIB)
+_pares = [
+    '<div class="stack">' + _secs[0] + CH_FALTA + '</div>' + _secs[1],
+    _secs[2] + _secs[3],
+    _secs[4] + CH_APORTES,
+    _cortes + CH_DONUTS,
+    CH_SENS_TAB + CH_SENS,
+    _secs[5] + _secs[6],
+]
+_nuevo = "".join('<div class="g2">' + p_ + "</div>" for p_ in _pares) + '<div class="g3">' + CH_BURB + CH_APEST + CH_BRECHA + "</div>"
 HTML = HTML[:_ini] + _nuevo + HTML[_fin:]
-HTML = HTML.replace("</style></head>", ".stack{display:grid;gap:16px;min-width:0;align-content:start}.stack>.graf{margin-top:0}.g1{margin-top:16px}.g1 table.heat{min-width:0}.g1 .graf{margin-top:0}.lg{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:3px}</style></head>", 1)
+HTML = HTML.replace("</style></head>", ".stack{display:grid;gap:16px;min-width:0;align-content:start}.stack>.graf{margin-top:0}.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px;align-items:stretch}.g3>.graf{margin-top:0;min-width:0}.g2>.graf{display:flex;flex-direction:column}.g2>.graf .calor{flex:1;min-height:0}.g2>.graf>table{flex:1}.g2>.graf .calor table.heat{height:100%;min-width:0}@media(max-width:1100px){.g3{grid-template-columns:1fr}}.lg{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:3px}</style></head>", 1)
 (AQUI.parent / "index.html").write_text(HTML, encoding="utf-8")
 print("index.html", round(len(HTML) / 1024), "KB")
