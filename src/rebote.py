@@ -2,7 +2,7 @@
 
 Compara enero a agosto de 2026 contra enero a agosto de 2025 y de 2024 (valor de producción real, pesos constantes de 2018), por
 segmento (6 tipos de obra y 2 tipos de cliente), nacional y por estado. Escribe en resultados/05_promedio_y_mercado/:
-rebote_segmentos.csv, rebote_estado_segmento.csv, serie_indice_mensual.csv y cifras_rebote.json.
+rebote_segmentos.csv, rebote_estado_segmento.csv, serie_indice_mensual.csv, serie_indice_segmentos.csv y cifras_rebote.json.
 Uso (desde la raíz del repositorio):  python src/rebote.py
 """
 import json
@@ -65,6 +65,13 @@ base = mens[(mens.index.year == 2024) & (mens.index.month <= 8)].mean()
 idx = (mens.rolling(3).mean() / base * 100)
 idx = idx[idx.index >= "2024-03-01"].round(2)
 idx.to_csv(SAL / "serie_indice_mensual.csv", encoding="utf-8-sig")
+
+mensS = E.groupby("fecha")[COLS].sum() / 1e6
+baseS = mensS[(mensS.index.year == 2024) & (mensS.index.month <= 8)].mean()
+idxS = (mensS.rolling(3).mean() / baseS * 100)
+idxS = idxS[idxS.index >= "2024-03-01"].round(2)
+idxS.columns = [NOMBRE[c] for c in idxS.columns]
+idxS.to_csv(SAL / "serie_indice_segmentos.csv", encoding="utf-8-sig")
 
 # --- Cifras clave y verificación contra el análisis 05 ---------------------------------------------------------------------------
 K = json.loads((SAL / "cifras_clave.json").read_text(encoding="utf-8"))

@@ -86,6 +86,123 @@ DATOS = {"filas": filas_sel.to_dict("records"), "estados": orden,
                        ("Agua, riego y saneamiento", "Agua, riego y saneamiento"), ("Otras construcciones", "Otras construcciones"),
                        ("Sector público", "Cliente: obra pública"), ("Sector privado", "Cliente: obra privada")]}
 
+# =====================================================================================================================
+# DETALLE: serie por segmento, aportes, estados, mapa de calor y cortes
+# =====================================================================================================================
+KK = json.loads((SAL / "cifras_clave.json").read_text(encoding="utf-8"))
+SENS = pd.read_csv(SAL / "sensibilidad.csv")
+SERS = pd.read_csv(SAL / "serie_indice_segmentos.csv", index_col=0, parse_dates=True)
+DATOS["fechas"] = [d.strftime("%Y-%m") for d in SERS.index]
+DATOS["series"] = {c: [None if pd.isna(x) else round(float(x), 1) for x in SERS[c]] for c in SERS.columns}
+
+
+def pts(v):
+    return f'<span class="d {"pos" if v > 0 else "neg"}"><span class="tri">{"▲" if v > 0 else "▼"}</span>{"+" if v > 0 else "−"}{abs(v):.1f}</span>'
+
+
+NOMB = {"Sector público": "Obra pública", "Sector privado": "Obra privada", "Transporte y urbanización": "Transporte y urbanización",
+        "Electricidad y telecomunicaciones": "Electricidad y telecom.", "Agua, riego y saneamiento": "Agua, riego y saneamiento",
+        "Petróleo y petroquímica": "Petróleo y petroquímica", "Otras construcciones": "Otras construcciones", "Edificación": "Edificación"}
+T24, T25 = float(SEG.loc["Total del estado", "ene_ago_2024"]), float(SEG.loc["Total del estado", "ene_ago_2025"])
+
+
+def tabla_aportes(tipo, titulo):
+    sub = SEG[SEG.tipo_segmento == tipo].copy()
+    sub["a25"] = (sub.ene_ago_2025 - sub.ene_ago_2024) / T24 * 100
+    sub["a26"] = (sub.ene_ago_2026 - sub.ene_ago_2025) / T25 * 100
+    sub["a24"] = (sub.ene_ago_2026 - sub.ene_ago_2024) / T24 * 100
+    filas = ""
+    for nom, r in sub.sort_values("a26", ascending=False).iterrows():
+        filas += f'<tr><td><b>{NOMB[nom]}</b></td><td class="n">{pts(r.a25)}</td><td class="n">{pts(r.a26)}</td><td class="n">{pts(r.a24)}</td></tr>'
+    filas += (f'<tr class="nac"><td><b>Suma = cifra nacional</b></td><td class="n">{pts(sub.a25.sum())}</td><td class="n">{pts(sub.a26.sum())}</td><td class="n">{pts(sub.a24.sum())}</td></tr>')
+    return f'<tr class="g"><td colspan="4">{titulo}</td></tr>{filas}'
+
+
+APORTES = ('<table class="cortes"><tr><th>Segmento</th><th class="n">2025 vs. 2024</th><th class="n">2026 vs. 2025</th><th class="n">2026 vs. 2024</th></tr>'
+           + tabla_aportes("tipo de obra", "Por tipo de obra") + tabla_aportes("quién contrata", "Por cliente") + "</table>")
+
+# estados (ordenable)
+ET = EST[EST.segmento == "Total del estado"].sort_values("peso_nacional_2025_pct", ascending=False)
+filas = ""
+for r in ET.itertuples():
+    falta = f"+{p1(r.falta_para_2024_pct)}%" if r.falta_para_2024_pct > 0 else '<span class="pos">ya arriba</span>'
+    filas += (f'<tr><td data-v="{r.entidad}"><b>{r.entidad}</b></td><td class="n g" data-v="{r.peso_nacional_2025_pct:.3f}">{p1(r.peso_nacional_2025_pct)}%</td>'
+              f'<td class="n" data-v="{r.var_26_vs_25_pct:.3f}">{sg(r.var_26_vs_25_pct)}</td><td class="n" data-v="{r.var_26_vs_24_pct:.3f}">{sg(r.var_26_vs_24_pct)}</td>'
+              f'<td class="n f" data-v="{r.falta_para_2024_pct:.3f}">{falta}</td></tr>')
+ESTADOS = ('<table class="cortes ord" id="tedo"><thead><tr><th>Estado</th><th class="n">Peso 2025</th><th class="n">vs. 2025</th><th class="n">vs. 2024</th>'
+           f'<th class="n">Falta para volver a 2024</th></tr></thead><tbody>{filas}</tbody></table>')
+
+# mapa de calor estado x segmento (contra 2024)
+COLS_H = ["Edificación", "Transporte y urbanización", "Electricidad y telecomunicaciones", "Agua, riego y saneamiento", "Petróleo y petroquímica",
+          "Otras construcciones", "Sector público", "Sector privado"]
+CORTO_H = {"Edificación": "Edifi-<br>cación", "Transporte y urbanización": "Transp. y<br>urbaniz.", "Electricidad y telecomunicaciones": "Electr. y<br>telecom.",
+           "Agua, riego y saneamiento": "Agua y<br>saneam.", "Petróleo y petroquímica": "Petróleo y<br>petroq.", "Otras construcciones": "Otras<br>constr.",
+           "Sector público": "Obra<br>pública", "Sector privado": "Obra<br>privada"}
+piv = EST.pivot(index="entidad", columns="segmento", values="var_26_vs_24_pct")
+rel = EST.pivot(index="entidad", columns="segmento", values="relevante")
+
+
+def celda(v, ok):
+    if v is None or pd.isna(v) or not ok:
+        return '<td class="hc" style="background:var(--pista)"></td>'
+    a = min(abs(v) / 60, 1) * 0.8 + 0.12
+    rgb = "43,106,82" if v > 0 else "143,43,62"
+    tc = "#F6F1E8" if a > 0.55 else "#1B1F27"
+    return f'<td class="hc" style="background:rgba({rgb},{a:.2f});color:{tc}">{"" if p1(v) == "0" else ("+" if v > 0 else "−")}{p1(v)}</td>'
+
+
+cab = "".join(f"<th>{CORTO_H[c]}</th>" for c in COLS_H)
+cuerpo = ""
+for e in ET.entidad:
+    cuerpo += f'<tr><td class="hl">{e}</td>' + "".join(celda(piv.loc[e, c], bool(rel.loc[e, c])) for c in COLS_H) + "</tr>"
+CALOR = (f'<div class="calor"><table class="heat"><tr><th></th>{cab}</tr>{cuerpo}</table></div>'
+         '<div class="nota"><span class="lg" style="background:rgba(143,43,62,.85)"></span> abajo de 2024 · <span class="lg" style="background:rgba(43,106,82,.85)"></span> arriba de 2024 · '
+         '<span class="lg" style="background:var(--pista)"></span> segmento menor a 0.1% del valor nacional. Escala hasta ±60%. Las variaciones muy altas vienen de bases pequeñas: tómalas con cautela. Estados ordenados por su peso en 2025.</div>')
+
+# tres cortes y sensibilidad
+nombres_cortes = ["Mes (ago-26 vs. ago-25)", "Enero a agosto (2026 vs. 2025)", "12 meses (sep-25 a ago-26 vs. previos)"]
+filas = ""
+for (clave, t), nom in zip(KK["titulares"].items(), nombres_cortes):
+    oculta = KK["caida_oculta_por_titular"][clave]
+    filas += (f'<tr><td><b>{nom}</b></td><td class="n">{sg(t["delta_pct"])}</td><td class="n">{t["estados_que_caen"]} de 32</td>'
+              f'<td class="n">{p1(t["valor_prev_en_caida_pct"])}%</td><td class="n">{"Caída oculta" if oculta else "Sin caída oculta"}</td></tr>')
+CORTES = ('<table class="cortes"><tr><th>Corte</th><th class="n">Cifra nacional</th><th class="n">Estados que caen</th><th class="n">Valor en esos estados</th><th class="n">Lectura</th></tr>'
+          + filas + "</table>")
+filas = ""
+for esc in ["Todos los estados", "Sin México ni Hidalgo", "Sin petróleo y petroquímica"]:
+    sub = SENS[SENS.escenario == esc]
+    v = [float(x) for x in sub.delta_pct]
+    filas += f'<tr><td><b>{esc}</b></td>' + "".join(f'<td class="n">{sg(x)}</td>' for x in v) + "</tr>"
+SENSIB = '<table class="cortes"><tr><th>Escenario</th><th class="n">Mes</th><th class="n">Enero a agosto</th><th class="n">12 meses</th></tr>' + filas + "</table>"
+
+SEGS_SERIE = ["Sector público", "Sector privado", "Edificación", "Transporte y urbanización", "Electricidad y telecomunicaciones", "Agua, riego y saneamiento",
+              "Petróleo y petroquímica", "Otras construcciones"]
+OPC = "".join(f'<option value="{s_}">{NOMB[s_]}</option>' for s_ in SEGS_SERIE)
+
+DETALLE = f'''
+<section class="card graf"><h2>Cada segmento contra la cifra nacional</h2>
+<p class="nota" style="margin:0 0 6px">Elige un segmento. Índice de valor de producción, promedio móvil de 3 meses, nivel de 2024 = 100.</p>
+<div class="sel" style="grid-template-columns:1fr"><div><label for="segs">Segmento</label><select id="segs">{OPC}</select></div></div>
+<div id="gserie"></div><div class="nota" id="nserie"></div></section>
+
+<section class="card graf"><h2>Quién hundió 2025 y quién rebota en 2026</h2>
+<p class="nota" style="margin:0 0 4px">Puntos que cada segmento suma o resta a la cifra nacional. Cada grupo suma lo mismo.</p>{APORTES}
+<div class="nota">Puntos = (valor del segmento en el periodo − valor previo) ÷ valor nacional previo × 100. Enero a agosto de cada año.</div></section>
+
+<section class="card graf"><h2>Los 32 estados: dónde se rebota y dónde no</h2>
+<p class="nota" style="margin:0 0 4px">Todo el estado, enero a agosto. Haz clic en un encabezado para ordenar.</p>{ESTADOS}</section>
+
+<section class="card graf"><h2>Estado por segmento: cuánto queda por recuperar contra 2024</h2>
+<p class="nota" style="margin:0 0 6px">Variación real de enero a agosto de 2026 contra 2024, en %.</p>{CALOR}</section>
+
+<section class="card graf"><h2>Tres cortes: la cifra nacional cambia según el periodo</h2>{CORTES}
+<div class="nota">Caída oculta = la cifra nacional sube pero más de 40% del valor está en estados que caen (criterio fijado antes de ver los datos).</div>
+<h3 style="font-family:'Instrument Serif',serif;font-weight:400;font-size:22px;margin:14px 0 2px">Cuánto depende de unos pocos estados y del petróleo</h3>{SENSIB}</section>
+'''
+
+CSS_EXTRA = '\nh3{margin:0}\n.calor{overflow-x:auto}\ntable.heat{border-collapse:separate;border-spacing:3px;width:100%;min-width:640px;font-size:13.5px}\ntable.heat th{font-size:11.5px;font-weight:600;color:var(--gris);text-align:center;line-height:1.15;padding-bottom:3px;border:0}\ntable.heat td.hl{font-weight:600;font-size:14px;white-space:nowrap;border:0;padding:0 6px 0 0}\ntable.heat td.hc{height:26px;text-align:center;font-weight:600;border:0;padding:0}\n.lg{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:3px}\ntr.g td{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--acero);font-weight:600;border-top:2px solid var(--marino);padding:7px 0 2px}\ntable.ord th{cursor:pointer;user-select:none} table.ord th:hover{color:var(--grafito)} table.ord th.asc::after{content:" ▲";font-size:10px} table.ord th.desc::after{content:" ▼";font-size:10px}\n'
+JS_EXTRA = '\nfunction dibujaSerie(seg) {\n  const f = D.fechas, n = f.length, W = 1000, H = 250, L = 34, T = 10, B = 24, RM = 175;\n  const a = D.series["Total del estado"], b = D.series[seg];\n  const todos = a.concat(b).filter(v => v !== null);\n  const lo = Math.min.apply(null, todos) - 6, hi = Math.max.apply(null, todos) + 6;\n  const X = i => L + i * (W - L - RM) / (n - 1), Y = v => T + (hi - v) / (hi - lo) * (H - T - B);\n  let s = "";\n  for (let v = Math.ceil(lo / 20) * 20; v < hi; v += 20) s += \'<line x1="\' + L + \'" x2="\' + (W - RM) + \'" y1="\' + Y(v) + \'" y2="\' + Y(v) + \'" stroke="#E3DBC9"/><text x="\' + (L - 6) + \'" y="\' + (Y(v) + 4) + \'" text-anchor="end" font-size="12" fill="#5B6573">\' + v + \'</text>\';\n  s += \'<line x1="\' + L + \'" x2="\' + (W - RM) + \'" y1="\' + Y(100) + \'" y2="\' + Y(100) + \'" stroke="#12213C" stroke-width="1.6" stroke-dasharray="6 4"/>\';\n  f.forEach((d, i) => { if (d.slice(5) === "01" || i === 0) s += \'<text x="\' + (X(i) + 4) + \'" y="\' + (H - 8) + \'" font-size="13" fill="#5B6573">\' + d.slice(0, 4) + \'</text>\'; if (d.slice(5) === "01") s += \'<line x1="\' + X(i) + \'" x2="\' + X(i) + \'" y1="\' + T + \'" y2="\' + (H - B) + \'" stroke="#D9D2C2"/>\'; });\n  const pl = (arr, color, w, dash) => \'<polyline points="\' + arr.map((v, i) => v === null ? "" : X(i) + "," + Y(v)).filter(Boolean).join(" ") + \'" fill="none" stroke="\' + color + \'" stroke-width="\' + w + \'"\' + (dash ? \' stroke-dasharray="6 4"\' : "") + \' stroke-linejoin="round" stroke-linecap="round"/>\';\n  s += pl(a, "#4A6785", 2.4, true) + pl(b, "#C4533A", 3.4, false);\n  const la = a[n - 1], lb = b[n - 1];\n  let ya = Y(la), yb = Y(lb); if (Math.abs(ya - yb) < 18) { if (ya < yb) ya = yb - 18; else yb = ya - 18; }\n  s += \'<circle cx="\' + X(n - 1) + \'" cy="\' + Y(la) + \'" r="4.5" fill="#4A6785"/><text x="\' + (X(n - 1) + 10) + \'" y="\' + (ya + 4) + \'" font-size="14" font-weight="600" fill="#4A6785">Cifra nacional \' + Math.round(la) + \'</text>\';\n  s += \'<circle cx="\' + X(n - 1) + \'" cy="\' + Y(lb) + \'" r="4.5" fill="#C4533A"/><text x="\' + (X(n - 1) + 10) + \'" y="\' + (yb + 4) + \'" font-size="14" font-weight="600" fill="#C4533A">\' + $("segs").selectedOptions[0].textContent + \' \' + Math.round(lb) + \'</text>\';\n  $("gserie").innerHTML = \'<svg viewBox="0 0 \' + W + \' \' + H + \'" width="100%" role="img">\' + s + \'</svg>\';\n  const fila = D.filas.find(x => x.entidad === "Nacional (32 estados)" && x.segmento === seg);\n  $("nserie").innerHTML = fila ? "Enero a agosto: " + dl(fila.v25) + " contra 2025 y " + dl(fila.v24) + " contra 2024. " + (fila.falta > 0 ? "Falta crecer " + f1(fila.falta) + "% para volver a 2024." : "Ya superó su nivel de 2024.") : "";\n}\n$("segs").addEventListener("input", () => dibujaSerie($("segs").value));\ndibujaSerie($("segs").value);\ndocument.querySelectorAll("table.ord th").forEach((th, ci) => th.addEventListener("click", () => {\n  const tb = th.closest("table").querySelector("tbody"), asc = !th.classList.contains("asc");\n  th.parentNode.querySelectorAll("th").forEach(x => x.classList.remove("asc", "desc")); th.classList.add(asc ? "asc" : "desc");\n  const val = tr => { const v = tr.children[ci].dataset.v; return isNaN(parseFloat(v)) ? v : parseFloat(v); };\n  [...tb.rows].sort((r1, r2) => { const a = val(r1), b = val(r2); return (a > b ? 1 : a < b ? -1 : 0) * (asc ? 1 : -1); }).forEach(r => tb.appendChild(r));\n}));\n'
+
 SELLO = ('<svg viewBox="0 0 100 100" width="46" height="46"><path d="M0 0 H84 L100 16 V100 H0 Z" fill="#F5F0E6"/>'
          '<g fill="none" stroke="#12213C" stroke-width="6.5" stroke-linecap="square" stroke-linejoin="miter">'
          '<path d="M28 32 H14 V68 H28"/><path d="M38 68 V32 H48 A9 9 0 0 1 48 50 H38 M48 50 L57 68"/>'
@@ -139,7 +256,7 @@ details{{margin-top:14px;font-size:14px}} details summary{{cursor:pointer;color:
 footer{{background:var(--marino);color:var(--marfil-texto);display:flex;justify-content:space-between;align-items:center;padding:12px 28px;gap:12px}}
 footer .n{{display:flex;align-items:center;gap:12px;font-family:"Instrument Serif",serif;font-size:26px}} footer .r{{font-weight:600;font-size:12px;letter-spacing:.06em}}
 @media(max-width:900px){{.kpis,.sel,.res,.dec .l{{grid-template-columns:1fr}}h1{{font-size:34px}}.kpi .v{{font-size:46px}}.cortes,.fuentes table{{display:block;overflow-x:auto}}}}
-</style></head>
+{CSS_EXTRA}</style></head>
 <body><div class="marco"><main>
 <span class="etq">Constructoras en México · Enero a agosto 2026</span>
 <h1>La construcción «crece» <em>+{p1(R['total_var_26_vs_25'])}%</em>. Sigue {p1(R['total_var_26_vs_24'])}% abajo de 2024.</h1>
@@ -155,13 +272,14 @@ footer .n{{display:flex;align-items:center;gap:12px;font-family:"Instrument Seri
 <p class="nota" style="margin:0 0 4px">Valor de producción, promedio móvil de 3 meses. Nivel de 2024 = 100 (línea punteada).</p>{GRAF}</section>
 
 <section class="card graf"><h2>Crece contra 2025, pero no contra 2024</h2>{TABLA}
-<div class="nota">Peso = parte del valor nacional de 2025. «Falta para volver a 2024» = valor de 2024 ÷ valor de 2026 − 1. Enero a agosto de cada año.</div></section>
+<div class="nota">Peso = parte del valor nacional de 2025. «Falta para volver a 2024» = valor de 2024 ÷ valor de 2026 − 1. Enero a agosto de cada año. Cifras de una encuesta (coeficiente de variación estatal de 5% a 9%) y preliminares: diferencias pequeñas pueden no ser reales.</div></section>
 
 <section class="card graf"><h2>¿Cuánto le falta a tu estado y a tu segmento?</h2>
 <div class="sel"><div><label for="edo">Tu estado</label><select id="edo"></select></div><div><label for="seg">Tu segmento</label><select id="seg"></select></div></div>
 <div class="res"><div class="card"><div class="t">Contra 2025</div><div class="v" id="r1">–</div></div><div class="card"><div class="t">Contra 2024</div><div class="v" id="r2">–</div></div>
 <div class="card"><div class="t">Falta para volver a 2024</div><div class="v" id="r3">–</div></div></div><div id="frase"></div></section>
 
+{DETALLE}
 <div class="dec"><h2>Qué hacer</h2><div class="l">
 <div><b>1. Metas contra 2024</b>La base de 2025 está hundida: crecer contra ella no es crecer.</div>
 <div><b>2. Mira tu segmento</b>Pública: faltan +{p1(R['publico_falta_para_2024'])}% para volver. Privada: +{p1(R['privado_falta_para_2024'])}%, y en jun–ago ya está en su nivel de 2024.</div>
@@ -173,7 +291,7 @@ footer .n{{display:flex;align-items:center;gap:12px;font-family:"Instrument Seri
 <li>Segmento = tipo de obra (6) o tipo de cliente (público o privado). La ENEC no publica el cruce entre ambos.</li>
 <li>Por estado, los segmentos con menos de 0.1% del valor nacional se marcan como segmento pequeño: su variación se exagera por la base.</li>
 <li>La gráfica usa un promedio móvil de 3 meses con base en el promedio mensual de enero a agosto de 2024. La tabla usa enero a agosto completo.</li>
-<li>Cifras de 2026 revisadas o preliminares; INEGI publica la siguiente el 24-nov-2026. No mide márgenes, costos ni demanda.</li></ul></details>
+<li>Cifras de 2026 revisadas o preliminares; INEGI publica la siguiente el 24-nov-2026. Son cifras de una encuesta (coeficiente de variación estatal de 5% a 9%): diferencias pequeñas pueden no ser reales. No mide márgenes, costos ni demanda.</li></ul></details>
 </main>
 
 <div class="fuentes">
@@ -206,6 +324,7 @@ function render() {{
 }}
 ["edo", "seg"].forEach(id => $(id).addEventListener("input", render));
 render();
+{JS_EXTRA}
 </script></body></html>
 """
 (AQUI.parent / "index.html").write_text(HTML, encoding="utf-8")

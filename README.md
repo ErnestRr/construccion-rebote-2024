@@ -1,6 +1,6 @@
 # La construcción «crece» 4.4%, pero sigue 13.7% abajo de 2024
 
-**[Abrir el reporte interactivo](https://ernestrr.github.io/construccion-titular-vs-mercado/)**: elige tu estado y tu segmento y mira cuánto le falta para volver a su nivel de 2024.
+**[Abrir el reporte interactivo](https://ernestrr.github.io/construccion-rebote-2024/)**: elige tu estado y tu segmento y mira cuánto le falta para volver a su nivel de 2024.
 
 ## Objetivo
 Mostrar a dueños y directores de empresas constructoras en México si el crecimiento de 2026 que reporta la cifra nacional es crecimiento real o un rebote sobre una base baja, y qué significa para sus metas, su presupuesto y su rentabilidad.
@@ -58,12 +58,13 @@ En el mismo periodo, 17 de 32 estados caen y concentran 63.1% del valor. Sin Est
 - La ENEC es una muestra de empresas (coeficiente de variación estatal de 5% a 9%). Mide actividad ejecutada, no demanda capturable ni rentabilidad.
 - El estado es el lugar de la obra, no el domicilio de la empresa.
 - Las cifras de 2026 son preliminares y pueden revisarse; INEGI publica la siguiente el 24 de noviembre de 2026.
+- Son cifras de una encuesta: diferencias pequeñas (por ejemplo, la obra privada 3.7% abajo de 2024) pueden no distinguirse del error de muestreo. No calculé intervalos de confianza.
 - «Rebote» es una lectura de estos números, no una cifra publicada por INEGI.
 - La gráfica (promedio de 3 meses) y la tabla (acumulado de enero a agosto) miden cortes distintos y no se mezclan en una misma comparación.
 
 ## Contenido
-- [`index.html`](https://ernestrr.github.io/construccion-titular-vs-mercado/): reporte interactivo con selector de estado y segmento.
-- `resultados/`: `rebote_segmentos.csv`, `rebote_estado_segmento.csv`, `serie_indice_mensual.csv`, `cifras_rebote.json`, y las tablas del análisis previo (`resultados.csv`, `titulares.csv`, `descomposicion.csv`, `sensibilidad.csv`, `series_segmentos.csv`, `cifras_clave.json`, `informe.md`, `metodologia.md`).
+- [`index.html`](https://ernestrr.github.io/construccion-rebote-2024/): reporte interactivo con selector de estado y segmento y el detalle: serie mensual por segmento, aportes de 2025 y 2026 en puntos, tabla ordenable de los 32 estados, mapa de calor de estado por segmento contra 2024, y los tres cortes con su sensibilidad.
+- `resultados/`: `rebote_segmentos.csv`, `rebote_estado_segmento.csv`, `serie_indice_mensual.csv`, `serie_indice_segmentos.csv`, `cifras_rebote.json`, y las tablas del análisis previo (`resultados.csv`, `titulares.csv`, `descomposicion.csv`, `sensibilidad.csv`, `series_segmentos.csv`, `cifras_clave.json`, `informe.md`, `metodologia.md`).
 - `graficas/`: infografía del hallazgo.
 - `src/`: `calcular.py` (análisis previo), `rebote.py` (comparación contra 2024), `construir_ejecutivo.py` (reporte), `config.json` y las fuentes tipográficas.
 
