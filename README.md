@@ -11,7 +11,7 @@ Mostrar a dueños y directores de empresas constructoras en México si el crecim
 La cifra nacional de la construcción sube contra 2025. ¿Ya recuperó el nivel de 2024, y en qué segmentos?
 
 ## El hallazgo principal
-**De enero a agosto de 2026, el valor de producción de las empresas constructoras sube +4.4% contra 2025, pero sigue 13.7% abajo de 2024.** En 2025 había caído 17.3%. Para volver al nivel de 2024 le falta crecer 15.8%.
+**De enero a agosto de 2026, el valor de producción de las empresas constructoras sube +4.4% contra 2025, pero sigue 13.7% abajo de 2024.** En 2025 había caído 17.3%, sobre todo por la obra pública. Para volver al nivel de 2024 le falta crecer 15.8%.
 
 - **Obra pública:** ▼ −42.0% en 2025, ▲ +24.9% en 2026 y aún 27.5% abajo de 2024. Para volver necesita crecer 37.9%.
 - **Obra privada (70.6% del valor):** ▲ +0.6% en 2025 y ▼ −4.2% en 2026. Está 3.7% abajo de 2024; en junio a agosto su promedio móvil de 3 meses ya está en el nivel de 2024.
