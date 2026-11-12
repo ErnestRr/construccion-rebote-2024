@@ -1,0 +1,19 @@
+{
+ "corte": "enero a agosto de 2026 contra enero a agosto de 2025 y de 2024, pesos constantes de 2018",
+ "total_var_26_vs_25": 4.3575243006657605,
+ "total_var_25_vs_24": -17.27984089322313,
+ "total_var_26_vs_24": -13.675289858595951,
+ "total_falta_para_2024": 15.841686391063647,
+ "publico_var_25_vs_24": -41.96066256328468,
+ "publico_var_26_vs_25": 24.911539098518244,
+ "publico_var_26_vs_24": -27.5021703252164,
+ "publico_falta_para_2024": 37.93516364363978,
+ "privado_var_25_vs_24": 0.5515570845968432,
+ "privado_var_26_vs_25": -4.213961098084818,
+ "privado_var_26_vs_24": -3.6856464144666146,
+ "privado_falta_para_2024": 3.8266844735593164,
+ "pico_ene_ago_total": {
+  "anio": 2018
+ },
+ "total_var_26_vs_pico": -15.271042189878049
+}
