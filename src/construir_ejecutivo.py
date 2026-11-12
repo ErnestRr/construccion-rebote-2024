@@ -327,14 +327,166 @@ render();
 {JS_EXTRA}
 </script></body></html>
 """
+import math as _m
 import re as _re
+
+VERDE_, VINO_, ACERO_ = "#2B6A52", "#8F2B3E", "#4A6785"
+CORTO_E = {"Estado de México": "Edomex", "Ciudad de México": "CDMX", "Baja California Sur": "BC Sur", "Baja California": "BC", "Quintana Roo": "Q. Roo",
+           "San Luis Potosí": "SLP", "Nuevo León": "N. León", "Aguascalientes": "Ags."}
+
+# --- selector: barras 2024 / 2025 / 2026 del segmento elegido
+JS_MINI = """
+function mini() {
+  const r = D.filas.find(x => x.entidad === $("edo").value && x.segmento === $("seg").value);
+  if (!r || r.v24 === null || r.v25 === null) { $("mini").innerHTML = ""; return; }
+  const i26 = 100 * (1 + r.v24 / 100), i25 = i26 / (1 + r.v25 / 100), vals = [["2024", 100], ["2025", i25], ["2026", i26]];
+  const mx = Math.max(100, i25, i26) * 1.1, W0 = 480; let s = "";
+  vals.forEach((v, k) => {
+    const w = v[1] / mx * W0, col = k === 0 ? "#4A6785" : (v[1] >= 100 ? "#2B6A52" : "#8F2B3E");
+    s += '<text x="0" y="' + (26 + k * 36) + '" font-size="14" font-weight="600" fill="#1B1F27">Ene–ago ' + v[0] + '</text><rect x="104" y="' + (10 + k * 36) + '" width="' + w + '" height="24" fill="' + col + '"/><text x="' + (110 + w) + '" y="' + (27 + k * 36) + '" font-size="15" font-weight="600" fill="' + col + '">' + Math.round(v[1]) + '</text>';
+  });
+  s += '<line x1="' + (104 + 100 / mx * W0) + '" x2="' + (104 + 100 / mx * W0) + '" y1="4" y2="116" stroke="#12213C" stroke-width="1.5" stroke-dasharray="5 4"/>';
+  $("mini").innerHTML = '<svg viewBox="0 0 700 120" width="100%">' + s + '</svg><div class="nota" style="margin-top:0">Índice del valor de enero a agosto, 2024 = 100 (línea punteada).</div>';
+}
+["edo", "seg"].forEach(id => $(id).addEventListener("input", mini));
+mini();
+"""
+HTML = HTML.replace('<div id="frase"></div>', '<div id="frase"></div><div id="mini" style="margin-top:8px"></div>', 1)
+HTML = HTML.replace("</script></body></html>", JS_MINI + "</script></body></html>", 1)
+
+
+def _card(titulo, nota, cuerpo, extra=""):
+    return f'<section class="card graf"><h2>{titulo}</h2><p class="nota" style="margin:0 0 6px">{nota}</p>{cuerpo}{extra}</section>'
+
+
+def barras_grupos(filas, W=740, L=200, RR=52, barh=13, fila_h=None, fmt=lambda v: f'{"+" if v > 0 else "−"}{abs(v):.1f}', escala=None):
+    """filas: ('g', titulo) o (etiqueta, [(valor, opacidad), ...])."""
+    todos = [abs(v) for f in filas if f[0] != "g" for v, _ in f[1]]
+    mx = escala or max(todos)
+    cx = L + (W - L - RR) / 2
+    k = (W - L - RR) / 2 / mx
+    y, out = 4, ""
+    for f in filas:
+        if f[0] == "g":
+            out += f'<text x="0" y="{y + 14}" font-size="12" font-weight="600" fill="{ACERO_}" letter-spacing=".08em">{f[1].upper()}</text>'
+            y += 24
+            continue
+        et, vals = f
+        h = fila_h or (len(vals) * (barh + 4) + 8)
+        out += f'<text x="0" y="{y + h / 2 + 5}" font-size="15" font-weight="600" fill="#1B1F27">{et}</text>'
+        for j, (v, op) in enumerate(vals):
+            col = VERDE_ if v > 0 else VINO_
+            w = abs(v) * k
+            x = cx if v > 0 else cx - w
+            yy = y + 4 + j * (barh + 4)
+            out += f'<rect x="{x:.1f}" y="{yy}" width="{max(w, 1.5):.1f}" height="{barh}" fill="{col}" opacity="{op}"/>'
+            tx, anc = (cx + w + 4, "start") if v > 0 else (cx - w - 4, "end")
+            out += f'<text x="{tx:.1f}" y="{yy + barh - 2}" text-anchor="{anc}" font-size="12" font-weight="600" fill="{col}">{fmt(v)}</text>'
+        y += h
+    out += f'<line x1="{cx:.1f}" x2="{cx:.1f}" y1="0" y2="{y}" stroke="#12213C" stroke-width="1.5"/>'
+    return f'<svg viewBox="0 0 {W} {y + 4}" width="100%">{out}</svg>'
+
+
+# --- aportes por segmento (2025 y 2026)
+_vals = {}
+for _s, _r in SEG.iterrows():
+    if _s != "Total del estado":
+        _vals[_s] = ((_r.ene_ago_2025 - _r.ene_ago_2024) / T24 * 100, (_r.ene_ago_2026 - _r.ene_ago_2025) / T25 * 100)
+_TIP = ["Transporte y urbanización", "Electricidad y telecomunicaciones", "Agua, riego y saneamiento", "Petróleo y petroquímica", "Otras construcciones", "Edificación"]
+_CLI = ["Sector público", "Sector privado"]
+_f = [("g", "Por tipo de obra")] + [(NOMB[s_], [(_vals[s_][0], .4), (_vals[s_][1], 1)]) for s_ in sorted(_TIP, key=lambda z: -_vals[z][1])]
+_f += [("g", "Por cliente")] + [(NOMB[s_], [(_vals[s_][0], .4), (_vals[s_][1], 1)]) for s_ in sorted(_CLI, key=lambda z: -_vals[z][1])]
+LEY_AP = ('<div class="nota"><span class="lg" style="background:#4A6785;opacity:.4"></span> 2025 vs. 2024 (claro) · <span class="lg" style="background:#4A6785"></span> 2026 vs. 2025 (sólido). '
+          'Verde suma, vino resta; en puntos de la cifra nacional.</div>')
+CH_APORTES = _card("Quién jaló la cifra, en puntos", "Cada barra es lo que el segmento suma o resta a la cifra nacional.", barras_grupos(_f), LEY_AP)
+
+
+# --- rosquillas de los tres cortes
+def donuts():
+    W, cy, r, sw = 740, 100, 58, 22
+    out = ""
+    for i, ((_, tt), nom) in enumerate(zip(KK["titulares"].items(), ["Mes", "Enero a agosto", "12 meses"])):
+        cx = W / 6 * (2 * i + 1)
+        c = 2 * _m.pi * r
+        cae = tt["valor_prev_en_caida_pct"]
+        d = tt["delta_pct"]
+        col = VERDE_ if d > 0 else VINO_
+        out += f'<circle cx="{cx:.0f}" cy="{cy}" r="{r}" fill="none" stroke="{VERDE_}" stroke-width="{sw}"/>'
+        out += f'<circle cx="{cx:.0f}" cy="{cy}" r="{r}" fill="none" stroke="{VINO_}" stroke-width="{sw}" stroke-dasharray="{c * cae / 100:.1f} {c:.1f}" transform="rotate(-90 {cx:.0f} {cy})"/>'
+        out += (f'<text x="{cx:.0f}" y="{cy + 2}" text-anchor="middle" font-family="Instrument Serif,serif" font-size="21" fill="{col}">{"+" if d > 0 else "−"}{p1(d)}%</text>'
+                f'<text x="{cx:.0f}" y="{cy + 16}" text-anchor="middle" font-size="10" fill="#5B6573">cifra nacional</text>'
+                f'<text x="{cx:.0f}" y="{cy + r + 30}" text-anchor="middle" font-size="15" font-weight="600" fill="#1B1F27">{nom}</text>'
+                f'<text x="{cx:.0f}" y="{cy + r + 48}" text-anchor="middle" font-size="13" font-weight="600" fill="{VINO_}">{p1(cae)}% del valor cae</text>'
+                f'<text x="{cx:.0f}" y="{cy + r + 64}" text-anchor="middle" font-size="12" fill="#5B6573">{tt["estados_que_caen"]} de 32 estados</text>')
+    return f'<svg viewBox="0 0 {W} {cy + r + 74}" width="100%">{out}</svg>'
+
+
+CH_DONUTS = _card("Cuánto del valor está en estados que caen", "Anillo: parte del valor del periodo previo en estados que caen (vino) y que suben (verde).", donuts(),
+                  '<div class="nota">Número al centro = cifra nacional del corte.</div>')
+
+# --- sensibilidad en barras (enero a agosto y 12 meses)
+_fs = []
+for _esc in ["Todos los estados", "Sin México ni Hidalgo", "Sin petróleo y petroquímica"]:
+    _sub = SENS[SENS.escenario == _esc]
+    _fs.append((_esc.replace("Todos los estados", "Los 32 estados"), [(float(x), 1) for x in _sub.delta_pct]))
+CH_SENS = _card("Sin unos pocos estados o sin petróleo", "Cada grupo: mes, enero a agosto y 12 meses (de arriba abajo), en %.", barras_grupos(_fs, escala=11, fmt=lambda v: f'{"+" if v > 0 else "−"}{abs(v):.1f}%'))
+
+
+# --- burbujas: los 32 estados contra 2025 y contra 2024
+def burbujas():
+    W, H, L, R_, T_, B_ = 740, 470, 52, 16, 14, 44
+    xr, yr = (-45, 140), (-85, 115)
+    X = lambda v: L + (v - xr[0]) / (xr[1] - xr[0]) * (W - L - R_)
+    Y = lambda v: T_ + (yr[1] - v) / (yr[1] - yr[0]) * (H - T_ - B_)
+    s = ""
+    for v in range(-50, 141, 50):
+        s += f'<line x1="{X(v):.1f}" x2="{X(v):.1f}" y1="{T_}" y2="{H - B_}" stroke="#E3DBC9"/><text x="{X(v):.1f}" y="{H - B_ + 16}" text-anchor="middle" font-size="11" fill="#5B6573">{v}</text>'
+    for v in range(-80, 111, 40):
+        s += f'<line x1="{L}" x2="{W - R_}" y1="{Y(v):.1f}" y2="{Y(v):.1f}" stroke="#E3DBC9"/><text x="{L - 6}" y="{Y(v) + 4:.1f}" text-anchor="end" font-size="11" fill="#5B6573">{v}</text>'
+    s += f'<line x1="{X(0):.1f}" x2="{X(0):.1f}" y1="{T_}" y2="{H - B_}" stroke="#12213C" stroke-width="1.5"/><line x1="{L}" x2="{W - R_}" y1="{Y(0):.1f}" y2="{Y(0):.1f}" stroke="#12213C" stroke-width="1.5"/>'
+    for txt, x, y, anc in [("Cae, pero sobre 2024", L + 6, T_ + 14, "start"), ("Rebota y ya recuperó", W - R_ - 6, T_ + 14, "end"),
+                           ("Cae y sigue abajo", L + 6, H - B_ - 8, "start"), ("Rebota, aún abajo", W - R_ - 6, H - B_ - 8, "end")]:
+        s += f'<text x="{x}" y="{y}" text-anchor="{anc}" font-size="12" font-weight="600" fill="#5B6573">{txt}</text>'
+    etiq = ""
+    for r_ in ET.itertuples():
+        x, y, rad = r_.var_26_vs_25_pct, r_.var_26_vs_24_pct, 3 + _m.sqrt(r_.peso_nacional_2025_pct) * 3.4
+        col = VERDE_ if y >= 0 else VINO_
+        s += f'<circle cx="{X(x):.1f}" cy="{Y(y):.1f}" r="{rad:.1f}" fill="{col}" fill-opacity=".72" stroke="#FBF8F1" stroke-width="1"/>'
+        if r_.peso_nacional_2025_pct >= 5 or abs(y) >= 64 or abs(x) >= 100:
+            izq = x > 95
+            etiq += (f'<text x="{X(x) + (-rad - 3 if izq else rad + 3):.1f}" y="{Y(y) + 4:.1f}" text-anchor="{"end" if izq else "start"}" font-size="11" font-weight="600" fill="#1B1F27">{CORTO_E.get(r_.entidad, r_.entidad)}</text>')
+    s += etiq
+    s += f'<text x="{(L + W - R_) / 2:.0f}" y="{H - 6}" text-anchor="middle" font-size="12" fill="#5B6573">Variación 2026 vs. 2025 (%) →</text>'
+    s += f'<text x="14" y="{(T_ + H - B_) / 2:.0f}" text-anchor="middle" font-size="12" fill="#5B6573" transform="rotate(-90 14 {(T_ + H - B_) / 2:.0f})">Variación 2026 vs. 2024 (%) →</text>'
+    return f'<svg viewBox="0 0 {W} {H}" width="100%">{s}</svg>'
+
+
+CH_BURB = _card("Cada estado: rebote contra nivel", "Eje horizontal: cuánto rebota contra 2025. Eje vertical: dónde queda contra 2024. Tamaño = peso en el valor.", burbujas())
+
+# --- aporte por estado
+_tot25 = float(ET.ene_ago_2025.sum())
+_ET2 = ET.assign(ap=(ET.ene_ago_2026 - ET.ene_ago_2025) / _tot25 * 100)
+_sel = pd.concat([_ET2.sort_values("ap", ascending=False).head(7), _ET2.sort_values("ap").head(7)]).sort_values("ap", ascending=False)
+_fe = [(CORTO_E.get(r_.entidad, r_.entidad), [(float(r_.ap), 1)]) for r_ in _sel.itertuples()]
+CH_APEST = _card("Estados que más suman y más restan", "Puntos que cada estado suma o resta a la cifra nacional, 2026 contra 2025.", barras_grupos(_fe, fila_h=24, escala=4.2))
+
+# --- brecha contra 2024 por estado (estados con al menos 1% del valor)
+_g = ET[ET.peso_nacional_2025_pct >= 1].sort_values("var_26_vs_24_pct")
+_sel2 = pd.concat([_g.head(7), _g.tail(7)]).sort_values("var_26_vs_24_pct", ascending=False)
+_f2 = [(CORTO_E.get(r_.entidad, r_.entidad), [(float(r_.var_26_vs_24_pct), 1)]) for r_ in _sel2.itertuples()]
+CH_BRECHA = _card("Dónde está más lejos de 2024", "Variación 2026 contra 2024 de los estados con al menos 1% del valor: los 7 más arriba y los 7 más abajo.",
+                  barras_grupos(_f2, fila_h=24, fmt=lambda v: f'{"+" if v > 0 else "−"}{abs(v):.0f}%'))
+
+# --- composición de la cuadrícula
 _secs = _re.findall(r'<section class="card graf">.*?</section>', HTML, flags=_re.S)
 assert len(_secs) == 8, len(_secs)
 _ini = HTML.index(_secs[0])
 _fin = HTML.index(_secs[-1]) + len(_secs[-1])
-# orden: [grafica, tabla] [selector, serie] [aportes, cortes] [estados, calor]
-_orden = [(0, 1), (2, 3), (4, 7), (5, 6)]
-_nuevo = "".join('<div class="g2">' + _secs[a] + _secs[b_] + "</div>" for a, b_ in _orden)
+_pares = [_secs[0] + _secs[1], _secs[2] + _secs[3], _secs[4] + CH_APORTES,
+          _secs[7] + '<div class="stack">' + CH_DONUTS + CH_SENS + '</div>',
+          _secs[5] + '<div class="stack">' + CH_BURB + CH_APEST + CH_BRECHA + '</div>']
+_nuevo = "".join('<div class="g2">' + p_ + "</div>" for p_ in _pares) + '<div class="g1">' + _secs[6] + "</div>"
 HTML = HTML[:_ini] + _nuevo + HTML[_fin:]
+HTML = HTML.replace("</style></head>", ".stack{display:grid;gap:16px;min-width:0;align-content:start}.stack>.graf{margin-top:0}.g1{margin-top:16px}.g1 table.heat{min-width:0}.g1 .graf{margin-top:0}.lg{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:3px}</style></head>", 1)
 (AQUI.parent / "index.html").write_text(HTML, encoding="utf-8")
 print("index.html", round(len(HTML) / 1024), "KB")
